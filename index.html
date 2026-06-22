@@ -14,32 +14,30 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 
-/* Cover-page styles. All rules are scoped under body.cover-page so a
-   shared stylesheet can govern chapter pages while the cover carries
-   the dark house-cover look. */
+/* Cover-page styles. All rules are scoped under body.cover-page so the
+   shared stylesheet (styles/book.css) keeps governing chapter pages
+   while the cover carries the dark house-cover look. */
 
 body.cover-page {
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background: radial-gradient(ellipse at 28% 12%, #0d1f3c 0%, #080f22 48%, #040811 100%);
+    background: radial-gradient(ellipse at 30% 15%, #122338 0%, #0b1626 45%, #070d18 100%);
     color: #dce5ee;
     font-family: 'Cormorant Garamond', Georgia, serif;
     line-height: 1.6;
     overflow-x: hidden;
 }
 
-/* Quantum interference / wave-function background motif */
+/* Faint pixel-grid motif and vignette: pixels are where the book begins. */
 body.cover-page::before {
     content: '';
     position: fixed;
     inset: 0;
     background:
-        repeating-linear-gradient(0deg,   rgba(140, 100, 230, 0.028) 0, rgba(140, 100, 230, 0.028) 1px, transparent 1px, transparent 56px),
-        repeating-linear-gradient(90deg,  rgba(140, 100, 230, 0.028) 0, rgba(140, 100, 230, 0.028) 1px, transparent 1px, transparent 56px),
-        repeating-linear-gradient(45deg,  rgba(80, 160, 220, 0.018) 0, rgba(80, 160, 220, 0.018) 1px, transparent 1px, transparent 80px),
-        repeating-linear-gradient(-45deg, rgba(80, 160, 220, 0.018) 0, rgba(80, 160, 220, 0.018) 1px, transparent 1px, transparent 80px),
-        radial-gradient(ellipse at center, transparent 38%, rgba(4, 8, 17, 0.7) 100%);
+        repeating-linear-gradient(0deg, rgba(120, 170, 220, 0.035) 0, rgba(120, 170, 220, 0.035) 1px, transparent 1px, transparent 48px),
+        repeating-linear-gradient(90deg, rgba(120, 170, 220, 0.035) 0, rgba(120, 170, 220, 0.035) 1px, transparent 1px, transparent 48px),
+        radial-gradient(ellipse at center, transparent 40%, rgba(5, 9, 16, 0.65) 100%);
     pointer-events: none;
     z-index: 1;
 }
@@ -55,7 +53,6 @@ body.cover-page .cover-wrap {
 body.cover-page .cover-image-wrapper { margin: 0 auto 1.4rem; }
 body.cover-page .cover-image { max-width: 280px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 18px 48px rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.15); display: block; margin: 0 auto; }
 @media (max-width: 600px) { body.cover-page .cover-image { max-width: 200px; } }
-
 body.cover-page .hero {
     min-height: 88vh;
     display: flex;
@@ -83,8 +80,8 @@ body.cover-page .edition-pill {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.28em;
-    color: rgba(170, 140, 240, 0.75);
-    border: 1px solid rgba(170, 140, 240, 0.22);
+    color: rgba(150, 200, 235, 0.75);
+    border: 1px solid rgba(150, 200, 235, 0.22);
     border-radius: 100px;
     padding: 0.4rem 1.3rem;
     margin-bottom: 1.6rem;
@@ -99,7 +96,7 @@ body.cover-page .cover-title {
     color: #e9f1f8;
     letter-spacing: 0.02em;
     margin: 0 0 0.55rem;
-    text-shadow: 0 0 40px rgba(150, 110, 240, 0.25), 0 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 0 0 36px rgba(110, 180, 235, 0.22), 0 2px 4px rgba(0, 0, 0, 0.45);
 }
 
 body.cover-page .cover-title .title-arc {
@@ -107,11 +104,11 @@ body.cover-page .cover-title .title-arc {
     font-size: clamp(1.15rem, 2.9vw, 1.85rem);
     font-weight: 500;
     margin-top: 0.45rem;
-    background: linear-gradient(90deg, #8ab4f8 0%, #b390f5 35%, #e07ac8 70%, #f5a76e 100%);
+    background: linear-gradient(90deg, #6fc6e8 0%, #9fb6f0 35%, #d99ad0 70%, #f0c27a 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: #b390f5;
+    color: #9fb6f0; /* fallback for non-supporting browsers */
 }
 
 body.cover-page .cover-subtitle {
@@ -124,6 +121,7 @@ body.cover-page .cover-subtitle {
     letter-spacing: 0.01em;
 }
 
+/* Decorative separator + author byline (LLMBook house style) */
 body.cover-page .cover-separator {
     margin: 1.6rem auto 1.1rem;
     display: flex;
@@ -137,14 +135,13 @@ body.cover-page .cover-separator::after {
     content: '';
     flex: 1;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(170, 140, 240, 0.4), transparent);
+    background: linear-gradient(90deg, transparent, rgba(150, 200, 235, 0.4), transparent);
 }
 body.cover-page .cover-separator span {
-    color: rgba(170, 140, 240, 0.6);
+    color: rgba(150, 200, 235, 0.6);
     font-size: 0.8rem;
     line-height: 1;
 }
-
 body.cover-page .cover-authors {
     margin: 0 auto;
     font-size: clamp(1rem, 2vw, 1.2rem);
@@ -154,12 +151,12 @@ body.cover-page .cover-authors {
 body.cover-page .cover-authors a {
     color: rgba(229, 238, 246, 0.9);
     text-decoration: none;
-    border-bottom: 1px solid rgba(170, 140, 240, 0.3);
+    border-bottom: 1px solid rgba(150, 200, 235, 0.3);
     transition: color 0.25s, border-color 0.25s;
 }
 body.cover-page .cover-authors a:hover {
-    color: #c4a8f8;
-    border-bottom-color: rgba(170, 140, 240, 0.6);
+    color: #7fd0ec;
+    border-bottom-color: rgba(150, 200, 235, 0.6);
 }
 body.cover-page .cover-authors .amp { margin: 0 0.5rem; opacity: 0.45; }
 
@@ -194,27 +191,27 @@ body.cover-page .btn-amazon {
 }
 
 body.cover-page .btn-start {
-    color: #0a0618;
-    background: linear-gradient(120deg, #8ab4f8 0%, #b390f5 55%, #e07ac8 130%);
-    box-shadow: 0 6px 26px rgba(150, 110, 240, 0.30);
+    color: #081120;
+    background: linear-gradient(120deg, #7fd0ec 0%, #b6c6f4 55%, #f0c27a 130%);
+    box-shadow: 0 6px 26px rgba(110, 180, 235, 0.28);
 }
 body.cover-page .btn-start:hover,
 body.cover-page .btn-start:focus {
     transform: translateY(-2px);
-    box-shadow: 0 10px 34px rgba(150, 110, 240, 0.45);
-    color: #0a0618;
+    box-shadow: 0 10px 34px rgba(110, 180, 235, 0.4);
+    color: #081120;
 }
 
 body.cover-page .btn-contents {
     color: rgba(220, 229, 238, 0.85);
-    border: 1px solid rgba(170, 140, 240, 0.35);
+    border: 1px solid rgba(150, 200, 235, 0.35);
     background: transparent;
 }
 body.cover-page .btn-contents:hover,
 body.cover-page .btn-contents:focus {
     color: #eaf3fa;
-    border-color: rgba(170, 140, 240, 0.7);
-    background: rgba(150, 110, 240, 0.08);
+    border-color: rgba(150, 200, 235, 0.7);
+    background: rgba(110, 180, 235, 0.08);
 }
 
 body.cover-page .btn-amazon {
@@ -258,7 +255,6 @@ body.cover-page .cover-section-sub {
     margin: 0 0 2rem;
 }
 
-/* Part cards */
 body.cover-page .parts-section { padding: 2.5rem 0 1.5rem; }
 
 body.cover-page .part-grid {
@@ -271,8 +267,8 @@ body.cover-page .part-card {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    background: rgba(12, 20, 42, 0.72);
-    border: 1px solid rgba(170, 140, 240, 0.14);
+    background: rgba(16, 30, 48, 0.72);
+    border: 1px solid rgba(150, 200, 235, 0.14);
     border-radius: 12px;
     padding: 1.5rem 1.4rem 1.3rem;
     color: inherit;
@@ -281,30 +277,30 @@ body.cover-page .part-card {
 body.cover-page .part-card:hover,
 body.cover-page .part-card:focus {
     transform: translateY(-4px);
-    border-color: rgba(170, 140, 240, 0.5);
-    box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+    border-color: rgba(150, 200, 235, 0.5);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
 }
-body.cover-page .part-card.p1:hover, body.cover-page .part-card.p1:focus { border-color: #7fc4c0; }
-body.cover-page .part-card.p2:hover, body.cover-page .part-card.p2:focus { border-color: #b390f5; }
-body.cover-page .part-card.p3:hover, body.cover-page .part-card.p3:focus { border-color: #8ab4f8; }
-body.cover-page .part-card.p4:hover, body.cover-page .part-card.p4:focus { border-color: #e07ac8; }
-body.cover-page .part-card.p5:hover, body.cover-page .part-card.p5:focus { border-color: #f5a76e; }
-body.cover-page .part-card.p6:hover, body.cover-page .part-card.p6:focus { border-color: #7fc4c0; }
+body.cover-page .part-card.part-1:hover,
+body.cover-page .part-card.part-1:focus { border-color: #6fd0cd; }
+body.cover-page .part-card.part-2:hover,
+body.cover-page .part-card.part-2:focus { border-color: #d9bd7a; }
+body.cover-page .part-card.part-3:hover,
+body.cover-page .part-card.part-3:focus { border-color: #b3a2f5; }
+body.cover-page .part-card.part-4:hover,
+body.cover-page .part-card.part-4:focus { border-color: #ef9eb4; }
 
 body.cover-page .part-card .part-roman {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 2rem;
     font-weight: 700;
     line-height: 1;
+    color: #7fd0ec;
     margin-bottom: 0.55rem;
-    color: #b390f5;
 }
-body.cover-page .part-card.p1 .part-roman { color: #7fc4c0; }
-body.cover-page .part-card.p2 .part-roman { color: #b390f5; }
-body.cover-page .part-card.p3 .part-roman { color: #8ab4f8; }
-body.cover-page .part-card.p4 .part-roman { color: #e07ac8; }
-body.cover-page .part-card.p5 .part-roman { color: #f5a76e; }
-body.cover-page .part-card.p6 .part-roman { color: #7fc4c0; }
+body.cover-page .part-card.part-1 .part-roman { color: #6fd0cd; }
+body.cover-page .part-card.part-2 .part-roman { color: #d9bd7a; }
+body.cover-page .part-card.part-3 .part-roman { color: #b3a2f5; }
+body.cover-page .part-card.part-4 .part-roman { color: #ef9eb4; }
 
 body.cover-page .part-card h3 {
     font-family: 'Cinzel', Georgia, serif;
@@ -329,57 +325,13 @@ body.cover-page .part-card .part-count {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: rgba(170, 140, 240, 0.8);
+    color: rgba(150, 200, 235, 0.8);
 }
-body.cover-page .part-card.p1 .part-count { color: #7fc4c0; }
-body.cover-page .part-card.p2 .part-count { color: #b390f5; }
-body.cover-page .part-card.p3 .part-count { color: #8ab4f8; }
-body.cover-page .part-card.p4 .part-count { color: #e07ac8; }
-body.cover-page .part-card.p5 .part-count { color: #f5a76e; }
-body.cover-page .part-card.p6 .part-count { color: #7fc4c0; }
+body.cover-page .part-card.part-1 .part-count { color: #6fd0cd; }
+body.cover-page .part-card.part-2 .part-count { color: #d9bd7a; }
+body.cover-page .part-card.part-3 .part-count { color: #b3a2f5; }
+body.cover-page .part-card.part-4 .part-count { color: #ef9eb4; }
 
-/* How it teaches */
-body.cover-page .teaches-section { padding: 3rem 0 2rem; }
-
-body.cover-page .teach-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap: 1rem;
-}
-
-body.cover-page .teach-item {
-    background: rgba(12, 20, 42, 0.5);
-    border: 1px solid rgba(170, 140, 240, 0.1);
-    border-radius: 10px;
-    padding: 1.15rem 1.1rem;
-}
-
-body.cover-page .teach-item .teach-glyph {
-    font-size: 1.25rem;
-    line-height: 1;
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #b390f5;
-}
-
-body.cover-page .teach-item h3 {
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: #dfeaf4;
-    margin: 0 0 0.45rem;
-}
-
-body.cover-page .teach-item p {
-    font-size: 0.95rem;
-    color: rgba(220, 229, 238, 0.68);
-    line-height: 1.5;
-    margin: 0;
-}
-
-/* Series section */
 body.cover-page .series-section { padding: 3rem 0 1.5rem; }
 body.cover-page .series-section .part-grid { margin-top: 2.5rem; }
 body.cover-page .series-card { cursor: default; }
@@ -399,7 +351,7 @@ body.cover-page .series-card .series-links {
     letter-spacing: 0.1em;
 }
 body.cover-page .series-card .series-links a {
-    color: #b390f5;
+    color: #7fd0ec;
     text-decoration: none;
     border-bottom: 1px solid transparent;
     transition: border-color 0.2s;
@@ -408,21 +360,23 @@ body.cover-page .series-card.part-1 .series-links a { color: #6fd0cd; }
 body.cover-page .series-card.part-2 .series-links a { color: #d9bd7a; }
 body.cover-page .series-card.part-3 .series-links a { color: #b3a2f5; }
 body.cover-page .series-card.part-4 .series-links a { color: #ef9eb4; }
-body.cover-page .series-card.part-5 .series-links a { color: #b390f5; }
-body.cover-page .series-card .series-links a:hover { border-bottom-color: currentColor; }
+body.cover-page .series-card .series-links a:hover { border-bottom-color: #7fd0ec; }
+body.cover-page .series-card.part-1 .series-links a:hover { border-bottom-color: #6fd0cd; }
+body.cover-page .series-card.part-2 .series-links a:hover { border-bottom-color: #d9bd7a; }
+body.cover-page .series-card.part-3 .series-links a:hover { border-bottom-color: #b3a2f5; }
+body.cover-page .series-card.part-4 .series-links a:hover { border-bottom-color: #ef9eb4; }
 body.cover-page .series-card .series-here {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 0.74rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.14em;
-    color: #b390f5;
+    color: #7fd0ec;
 }
 body.cover-page .series-card.part-1 .series-here { color: #6fd0cd; }
 body.cover-page .series-card.part-2 .series-here { color: #d9bd7a; }
 body.cover-page .series-card.part-3 .series-here { color: #b3a2f5; }
 body.cover-page .series-card.part-4 .series-here { color: #ef9eb4; }
-body.cover-page .series-card.part-5 .series-here { color: #b390f5; }
 body.cover-page .series-cta {
     text-align: center;
     margin-top: 1.6rem;
@@ -430,20 +384,59 @@ body.cover-page .series-cta {
     color: rgba(220, 229, 238, 0.7);
 }
 body.cover-page .series-cta a {
-    color: #b390f5;
+    color: #7fd0ec;
     text-decoration: none;
-    border-bottom: 1px solid rgba(170, 140, 240, 0.3);
+    border-bottom: 1px solid rgba(150, 200, 235, 0.3);
 }
-body.cover-page .series-cta a:hover { border-bottom-color: rgba(170, 140, 240, 0.7); }
+body.cover-page .series-cta a:hover { border-bottom-color: rgba(150, 200, 235, 0.7); }
 
-/* Footer */
+body.cover-page .teaches-section { padding: 3rem 0 2rem; }
+
+body.cover-page .teach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem;
+}
+
+body.cover-page .teach-item {
+    background: rgba(16, 30, 48, 0.5);
+    border: 1px solid rgba(150, 200, 235, 0.1);
+    border-radius: 10px;
+    padding: 1.15rem 1.1rem;
+}
+
+body.cover-page .teach-item .teach-glyph {
+    font-size: 1.25rem;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #7fd0ec;
+}
+
+body.cover-page .teach-item h3 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #dfeaf4;
+    margin: 0 0 0.45rem;
+}
+
+body.cover-page .teach-item p {
+    font-size: 0.95rem;
+    color: rgba(220, 229, 238, 0.68);
+    line-height: 1.5;
+    margin: 0;
+}
+
 body.cover-page footer.cover-footer {
     position: relative;
     z-index: 2;
     text-align: center;
     padding: 2.5rem 1.5rem 2.2rem;
     margin-top: 2rem;
-    border-top: 1px solid rgba(170, 140, 240, 0.12);
+    border-top: 1px solid rgba(150, 200, 235, 0.12);
     color: rgba(220, 229, 238, 0.45);
     font-size: 0.9rem;
     background: transparent;
@@ -456,10 +449,10 @@ body.cover-page footer.cover-footer .footer-title {
     color: rgba(220, 229, 238, 0.55);
 }
 body.cover-page footer.cover-footer a {
-    color: rgba(170, 140, 240, 0.75);
+    color: rgba(150, 200, 235, 0.75);
     text-decoration: none;
 }
-body.cover-page footer.cover-footer a:hover { color: #c4a8f8; }
+body.cover-page footer.cover-footer a:hover { color: #aedcf5; }
 </style>
 </head>
 <body class="cover-page">
