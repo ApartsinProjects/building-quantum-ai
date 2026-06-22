@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="About the Hands-On AI Science Series: deep, build-it-yourself guides to the major fields of artificial intelligence, with the other books in the series." name="description"/>
+<title>About the Hands-On AI Science Series | Building Quantum AI</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.7;
+}
+
+/* Header */
+.chapter-header {
+    background: linear-gradient(135deg, #0d1f3c 0%, #0a1628 100%);
+    border-bottom: 1px solid rgba(170, 140, 240, 0.18);
+    padding: 0 1.5rem 1.5rem;
+}
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0 0.5rem;
+    max-width: 820px;
+    margin: 0 auto;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+}
+.book-title-link { color: rgba(200, 210, 230, 0.8); text-decoration: none; }
+.book-title-link:hover { color: #c4a8f8; }
+.toc-link { color: rgba(170, 140, 240, 0.8); text-decoration: none; }
+.part-label { max-width: 820px; margin: 0.6rem auto 0; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.14em; color: rgba(170, 140, 240, 0.7); }
+.part-label a { color: inherit; text-decoration: none; }
+.chapter-header h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #ecf1f8;
+    max-width: 820px;
+    margin: 0.8rem auto 0.4rem;
+    letter-spacing: 0.03em;
+}
+
+/* Main content */
+.content { max-width: 820px; margin: 0 auto; padding: 2rem 1.5rem 1rem; }
+.content p { font-size: 1.12rem; margin: 0 0 1.1rem; }
+.content em { color: #dfeaf4; }
+.content h2 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ecf1f8;
+    letter-spacing: 0.03em;
+    margin: 2rem 0 1rem;
+}
+.content a { color: #b390f5; text-decoration: none; border-bottom: 1px solid rgba(179, 144, 245, 0.3); }
+.content a:hover { color: #c4a8f8; border-bottom-color: #c4a8f8; }
+.content ul { list-style: none; margin: 0; padding: 0; }
+.content ul li {
+    font-size: 1.08rem;
+    padding: 0.7rem 0 0.7rem 1.1rem;
+    border-top: 1px solid rgba(170, 140, 240, 0.1);
+    position: relative;
+}
+.content ul li::before { content: '\2022'; color: #b390f5; position: absolute; left: 0; }
+.content ul li:first-child { border-top: none; }
+.content ul li strong { color: #dfeaf4; }
+
+/* Callout */
+.callout.key-insight {
+    background: rgba(179, 144, 245, 0.08);
+    border: 1px solid rgba(179, 144, 245, 0.22);
+    border-left: 4px solid #b390f5;
+    border-radius: 8px;
+    padding: 1rem 1.3rem;
+    margin: 1.5rem 0;
+}
+.callout .callout-title {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #c4a8f8;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.5rem;
+}
+.callout p { margin: 0; font-size: 1.05rem; }
+
+/* Chapter nav */
+.chapter-nav {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 2.5rem 0 1rem;
+    border-top: 1px solid rgba(170, 140, 240, 0.12);
+    padding-top: 1.5rem;
+}
+.chapter-nav a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    border: 1px solid rgba(170, 140, 240, 0.18);
+    border-radius: 8px;
+    padding: 0.7rem 1.1rem;
+    color: #c9d1d9;
+    min-width: 9rem;
+}
+.chapter-nav a:hover { border-color: rgba(170, 140, 240, 0.5); background: rgba(170, 140, 240, 0.05); }
+.chapter-nav .nav-label { font-family: 'Cinzel', Georgia, serif; font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(179, 144, 245, 0.8); }
+.chapter-nav .nav-num { font-size: 0.8rem; color: rgba(200, 210, 230, 0.5); }
+.chapter-nav .nav-title { font-family: 'Cinzel', Georgia, serif; font-size: 0.95rem; color: #dfeaf4; }
+.chapter-nav .next { text-align: right; align-items: flex-end; }
+
+/* Footer */
+.content > footer { text-align: center; padding: 1.5rem 0 2.5rem; font-size: 0.9rem; color: rgba(200, 210, 230, 0.4); }
+.content > footer a { color: rgba(179, 144, 245, 0.7); border: none; }
+.content > footer a:hover { color: #c4a8f8; }
+</style>
+</head>
+<body>
+
+<header class="chapter-header">
+<nav class="header-nav">
+<a class="book-title-link" href="../index.html">Building Quantum AI</a>
+<a class="toc-link" href="../toc.html" title="Table of Contents">&#9776; Contents</a>
+</nav>
+<div class="part-label"><a href="../index.html">Front Matter</a></div>
+<h1>About the Hands-On AI Science Series</h1>
+</header>
+
+<main class="content" id="main-content">
+<p><em>Building Quantum AI</em> is part of <strong>Hands-On AI Science</strong>, a series that pairs serious depth with serious building.</p>
+<p>Most AI books pick a side. Some are reference manuals for an API or a library: handy this year, stale the next, and quiet about why anything works. Others are theory texts you admire but rarely run. Hands-On AI Science was created to be both at once: the science and the build, in one connected story.</p>
+<p>Each book in the series takes a single field of AI and develops it from first principles to the current research frontier. It treats the subject at graduate depth, with a real dive into the theories, models, and internals, and it aims to be complete, placing the classical foundations and the newest approaches side by side. Then it makes you build. Every core idea is implemented in plain Python, first in a small from-scratch version that exposes the mechanism, then with the modern libraries and tools that do the job quickly. That hands-on half is where the series gets its name.</p>
+<div class="callout key-insight">
+<div class="callout-title">Key Insight: What "Hands-On AI Science" promises</div>
+<p>It is hands-on: it shows you how to build things. It is science: it does not stop at the API, and it takes the scientific and philosophical questions behind the models seriously. And it is AI: from the basics through the frontier.</p>
+</div>
+<p>Depth need not be dense. The series explains in plain language and leans on illustrations, analogies, mental models, and step-by-step reasoning, with epigraphs and a light tone that make the books genuinely pleasant to read. Next to the science you will find implementation best practices, rules of thumb, case studies, and the engineering issues that decide whether a method survives contact with real data.</p>
+<p>Each volume is self-contained and structured to support a full undergraduate or graduate course, or a focused seminar on any one of its parts.</p>
+<h2>The Books in the Series</h2>
+<ul>
+<li><strong>Building Language AI</strong>: From Tokens to Agents. <a href="https://llmbook.apartsin.com" rel="noopener" target="_blank">llmbook.apartsin.com</a> &#183; <a href="https://www.amazon.com/dp/B0H1MQH23D" rel="noopener" target="_blank">Kindle</a></li>
+<li><strong>Building Vision AI</strong>: From Pixels to Generative Models. <a href="https://visionbook.apartsin.com" rel="noopener" target="_blank">visionbook.apartsin.com</a> &#183; <a href="https://www.amazon.com/dp/B0H5BT8Y75" rel="noopener" target="_blank">Kindle</a></li>
+<li><strong>Building Temporal AI</strong>: From Forecasting to Sequential Decision Making. <a href="https://temporalbook.apartsin.com" rel="noopener" target="_blank">temporalbook.apartsin.com</a> &#183; <a href="https://www.amazon.com/dp/B0H5KRJFCD" rel="noopener" target="_blank">Kindle</a></li>
+<li><strong>Building Scalable AI</strong>: From Big Data Algorithms to Distributed Intelligence. <a href="https://scalablebook.apartsin.com" rel="noopener" target="_blank">scalablebook.apartsin.com</a> &#183; <a href="https://www.amazon.com/dp/B0H5Q1471R" rel="noopener" target="_blank">Kindle</a></li>
+<li><strong>Building Embodied AI</strong>: From Perception to Autonomous Action. <a href="https://embodiedbook.apartsin.com" rel="noopener" target="_blank">embodiedbook.apartsin.com</a></li>
+<li><strong>Building Agentic AI</strong>: From Goals to Autonomous Systems. <a href="https://agenticbook.apartsin.com" rel="noopener" target="_blank">agenticbook.apartsin.com</a></li>
+<li><strong>Building Discovery AI</strong>: From Vibe Coding to Autonomous Science. <a href="https://discoverybook.apartsin.com" rel="noopener" target="_blank">discoverybook.apartsin.com</a></li>
+<li><strong>Building Neuromorphic AI</strong>: From Spiking Neurons to Edge Intelligence. <a href="https://neuromorphicbook.apartsin.com" rel="noopener" target="_blank">neuromorphicbook.apartsin.com</a></li>
+<li><strong>Building Quantum AI</strong>: From Qubits to Quantum Machine Learning. <em>You are reading it.</em> <a href="../index.html">quantumbook.apartsin.com</a></li>
+</ul>
+<nav class="chapter-nav">
+<a class="prev" href="../toc.html"><span class="nav-label">Previous</span><span class="nav-num">Book Index</span><span class="nav-title">Table of Contents</span></a>
+<a class="up" href="../toc.html"><span class="nav-label">Up</span><span class="nav-num">Book Index</span><span class="nav-title">Table of Contents</span></a>
+<a class="next" href="../index.html"><span class="nav-label">Next</span><span class="nav-num">Home</span><span class="nav-title">Cover</span></a>
+</nav>
+<footer><p>First Edition, 2026 · <a href="../toc.html">Contents</a></p></footer>
+</main>
+</body>
+</html>
