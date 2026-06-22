@@ -59,7 +59,7 @@ Building Scalable AI (scalablebook.apartsin.com)
 The title follows the series pattern ("Building [Domain] AI: From [X] to [Y]").
 It signals the build-it-yourself ethos of Hands-On AI Science, the beginner-
 friendly quantum-computing foundation, and the advanced machine-learning
-destination. Domain URL: **quantum.apartsin.com**.
+destination. Domain URL: **quantumbook.apartsin.com**.
 
 ---
 
@@ -2541,7 +2541,7 @@ sources.
 
 - **Rebranded as "Building Quantum AI: From Qubits to Quantum Machine Learning"**,
   following the Hands-On AI Science series naming convention ("Building [X] AI:
-  From [Y] to [Z]"). Series context and URL (quantum.apartsin.com) added.
+  From [Y] to [Z]"). Series context and URL (quantumbook.apartsin.com) added.
 - **Series front-matter entry** added (About the Hands-On AI Science Series,
   matching F8 in VisionAI and LanguageAI).
 - **Cover page (index.html) and Table of Contents (toc.html)** created, matching
