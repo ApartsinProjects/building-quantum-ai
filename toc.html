@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Detailed table of contents for Building Quantum AI: From Qubits to Quantum Machine Learning." name="description"/>
+<title>Contents | Building Quantum AI: From Qubits to Quantum Machine Learning</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #0d1117;
+    color: #c9d1d9;
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+}
+
+/* Header */
+.chapter-header {
+    background: linear-gradient(135deg, #0d1f3c 0%, #0a1628 100%);
+    border-bottom: 1px solid rgba(170, 140, 240, 0.18);
+    padding: 0 1.5rem 1.5rem;
+}
+.header-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0 0.5rem;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+}
+.book-title-link { color: rgba(200, 210, 230, 0.8); text-decoration: none; }
+.book-title-link:hover { color: #c4a8f8; }
+.toc-link { color: rgba(170, 140, 240, 0.8); text-decoration: none; }
+.chapter-header h1 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #ecf1f8;
+    margin: 0.8rem 0 0.4rem;
+    letter-spacing: 0.03em;
+}
+.chapter-subtitle { color: rgba(200, 210, 230, 0.65); font-size: 1rem; margin: 0.2rem 0; font-style: italic; }
+.toc-draft-note { max-width: 1080px; margin: 1.25rem auto 0; padding: 0 1.5rem; font-size: 0.8rem; color: #6a737d; text-align: center; }
+
+/* Main TOC container */
+.content.toc-main { max-width: 1080px; margin: 0 auto; padding: 1.5rem; }
+
+/* Part sections */
+.toc-part { margin-bottom: 2.2rem; border-radius: 10px; overflow: hidden; border: 1px solid rgba(170, 140, 240, 0.12); }
+
+.toc-part-header {
+    background: linear-gradient(135deg, #1a1040, #130d36);
+    padding: 1.1rem 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.toc-part-header.p1  { background: linear-gradient(135deg, #0d2830, #0a1f28); }
+.toc-part-header.p2  { background: linear-gradient(135deg, #1a1040, #130d36); }
+.toc-part-header.p3  { background: linear-gradient(135deg, #0d1f40, #0a1530); }
+.toc-part-header.p4  { background: linear-gradient(135deg, #2a1040, #200d30); }
+.toc-part-header.p5  { background: linear-gradient(135deg, #2a1820, #201015); }
+.toc-part-header.p6  { background: linear-gradient(135deg, #1a2a10, #101f0a); }
+.toc-part-header.p7  { background: linear-gradient(135deg, #2a2010, #1f160a); }
+.toc-part-header.p8  { background: linear-gradient(135deg, #2a1010, #1f0a0a); }
+.toc-part-header.p9  { background: linear-gradient(135deg, #102a28, #0a1f1e); }
+.toc-part-header.p10 { background: linear-gradient(135deg, #1a1a30, #101025); }
+.toc-part-header.p11 { background: linear-gradient(135deg, #2a1030, #1f0a22); }
+.toc-part-header.front-matter { background: linear-gradient(135deg, #1a1a1a, #111111); }
+
+.toc-part-title {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+    letter-spacing: 0.04em;
+}
+.toc-part-prefix { opacity: 0.7; margin-right: 0.5rem; }
+.toc-part-sep { opacity: 0.4; margin: 0 0.5rem; }
+.toc-part-count { font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.45); white-space: nowrap; }
+.toc-part-subtitle { color: rgba(200,210,230,0.55); font-size: 0.85rem; font-style: italic; margin: 0.4rem 0 0; width: 100%; }
+
+/* Chapter list */
+.toc-chapter-list { list-style: none; margin: 0; padding: 0; }
+
+.toc-chapter { padding: 0.7rem 1.1rem; border-top: 1px solid rgba(170, 140, 240, 0.07); }
+.toc-chapter:first-child { border-top: none; }
+.toc-chapter:hover { background: rgba(170, 140, 240, 0.04); }
+
+.toc-chapter-head { display: grid; grid-template-columns: 2.8rem 1fr; gap: 0 0.65rem; align-items: start; margin-bottom: 0.3rem; }
+.toc-chapter-num {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #b390f5;
+    background: rgba(179, 144, 245, 0.1);
+    border: 1px solid rgba(179, 144, 245, 0.2);
+    border-radius: 6px;
+    width: 2.2rem;
+    height: 2.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0.1rem;
+    flex-shrink: 0;
+}
+.toc-chapter-title { font-family: 'Cinzel', Georgia, serif; font-size: 0.96rem; font-weight: 700; color: #dfeaf4; line-height: 1.3; }
+.toc-chapter-subtitle { display: block; font-size: 0.78rem; font-style: italic; color: #6a737d; line-height: 1.4; margin-top: 0.15rem; }
+
+/* Accent colors by part */
+.toc-part.p1  .toc-chapter-num { color: #7fc4c0; background: rgba(127,196,192,0.1); border-color: rgba(127,196,192,0.2); }
+.toc-part.p2  .toc-chapter-num { color: #7fc4c0; background: rgba(127,196,192,0.1); border-color: rgba(127,196,192,0.2); }
+.toc-part.p3  .toc-chapter-num { color: #7fc4c0; background: rgba(127,196,192,0.1); border-color: rgba(127,196,192,0.2); }
+.toc-part.p4  .toc-chapter-num { color: #b390f5; background: rgba(179,144,245,0.1); border-color: rgba(179,144,245,0.2); }
+.toc-part.p5  .toc-chapter-num { color: #b390f5; background: rgba(179,144,245,0.1); border-color: rgba(179,144,245,0.2); }
+.toc-part.p6  .toc-chapter-num { color: #8ab4f8; background: rgba(138,180,248,0.1); border-color: rgba(138,180,248,0.2); }
+.toc-part.p7  .toc-chapter-num { color: #f5a76e; background: rgba(245,167,110,0.1); border-color: rgba(245,167,110,0.2); }
+.toc-part.p8  .toc-chapter-num { color: #e07ac8; background: rgba(224,122,200,0.1); border-color: rgba(224,122,200,0.2); }
+.toc-part.p9  .toc-chapter-num { color: #7fc4c0; background: rgba(127,196,192,0.1); border-color: rgba(127,196,192,0.2); }
+.toc-part.p10 .toc-chapter-num { color: #8ab4f8; background: rgba(138,180,248,0.1); border-color: rgba(138,180,248,0.2); }
+.toc-part.p11 .toc-chapter-num { color: #e07ac8; background: rgba(224,122,200,0.1); border-color: rgba(224,122,200,0.2); }
+.toc-part.front-matter .toc-chapter-num { color: #8a93a3; background: rgba(138,147,163,0.1); border-color: rgba(138,147,163,0.2); font-size: 0.72rem; }
+
+.toc-card-link { color: inherit; text-decoration: none; }
+.toc-card-link:hover .toc-chapter-title { color: #c4a8f8; }
+
+/* New badge */
+.badge-new { display: inline-block; font-family: system-ui, sans-serif; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(179,144,245,0.18); color: #b390f5; border: 1px solid rgba(179,144,245,0.3); border-radius: 4px; padding: 0.1em 0.45em; margin-left: 0.45rem; vertical-align: middle; }
+
+/* Chapter 0 special */
+.ch-zero .toc-chapter-num { font-size: 0.75rem; }
+
+/* Footer */
+footer { text-align: center; padding: 2rem 1.5rem; margin-top: 1rem; border-top: 1px solid rgba(170,140,240,0.1); font-size: 0.85rem; color: rgba(200,210,230,0.4); }
+footer a { color: rgba(179,144,245,0.7); text-decoration: none; }
+footer a:hover { color: #c4a8f8; }
+.footer-title { font-family: 'Cinzel', Georgia, serif; font-size: 0.78rem; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<header class="chapter-header">
+<nav class="header-nav">
+<a class="book-title-link" href="index.html">Building Quantum AI: From Qubits to Quantum Machine Learning</a>
+<span class="toc-link">&#9776; Contents</span>
+</nav>
+<h1>Table of Contents</h1>
+<p class="chapter-subtitle">A graduate-level guide to quantum computing, quantum machine learning, and quantum AI.</p>
+<p class="chapter-subtitle">First Edition &#183; 2026 &#183; Hands-On AI Science Series</p>
+</header>
+
+<p class="toc-draft-note">Chapter 0 + 69 numbered chapters &#183; 11 parts &#183; 6 appendices &#183; Capstone projects</p>
+
+<main class="content toc-main" id="main-content">
+
+<!-- Front Matter -->
+<section class="toc-part front-matter" id="front-matter">
+<header class="toc-part-header front-matter">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Front Matter</span></h2>
+<span class="toc-part-count">9 entries</span>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F1</span><div><span class="toc-chapter-title">Why This Book Exists</span><span class="toc-chapter-subtitle">The evaluation-first stance, the seven-forms method, and why quantum AI is not magic AI.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F2</span><div><span class="toc-chapter-title">What This Book Covers</span><span class="toc-chapter-subtitle">The eleven-part arc from qubits to production-grade quantum AI software.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F3</span><div><span class="toc-chapter-title">Who Should Read This Book</span><span class="toc-chapter-subtitle">Graduate students, AI/ML engineers, classical-ML researchers, and quantum-curious practitioners.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F4</span><div><span class="toc-chapter-title">Diagnostic Self-Test</span><span class="toc-chapter-subtitle">Short checks on Python, linear algebra, probability, and ML to pick your onramp path.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F5</span><div><span class="toc-chapter-title">Notation Guide</span><span class="toc-chapter-subtitle">Dirac notation, state vectors, operators, and conventions, all in one place.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F6</span><div><span class="toc-chapter-title">Chapter-Dependency Graph</span><span class="toc-chapter-subtitle">A DAG of prerequisites with suggested paths for the three course modes.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F7</span><div><span class="toc-chapter-title">Running the Code and Coding With a Copilot</span><span class="toc-chapter-subtitle">One-click environment setup and the Build-With-AI discipline that runs throughout.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F8</span><div><span class="toc-chapter-title">About the Authors</span><span class="toc-chapter-subtitle">Who wrote this book and how.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F9</span><div><span class="toc-chapter-title">About the Hands-On AI Science Series</span><span class="toc-chapter-subtitle">The five-book series and where this volume fits.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Chapter 0 -->
+<section class="toc-part p1" id="ch0">
+<header class="toc-part-header p1">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Foundations</span> <span class="toc-part-sep">&#183;</span> Mathematical Onramp</h2>
+<span class="toc-part-count">1 chapter</span>
+<p class="toc-part-subtitle">The mathematics the rest of the book uses: complex numbers, vectors, matrices, tensor products, probability, and Dirac notation.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter ch-zero"><div class="toc-chapter-head"><span class="toc-chapter-num">0</span><div><a class="toc-card-link" href="#"><span class="toc-chapter-title">Mathematical Foundations You Actually Need <span class="badge-new">New</span></span></a><span class="toc-chapter-subtitle">Complex numbers, inner products, unitarity, tensor products, eigenvalues, probability, and gentle Dirac notation.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part I -->
+<section class="toc-part p1" id="part-i">
+<header class="toc-part-header p1">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part I</span> <span class="toc-part-sep">&#183;</span> The Rules of the Quantum Computing Game</h2>
+<span class="toc-part-count">6 chapters</span>
+<p class="toc-part-subtitle">Quantum computing as a rule-based computational model: qubits, measurement, gates, rotation gates, and circuits.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">1</span><div><a class="toc-card-link" href="#"><span class="toc-chapter-title">Quantum Computing Without Physics</span></a><span class="toc-chapter-subtitle">The computational model, not the physics story. Why it matters for AI, and what "Quantum AI" can and cannot mean.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">2</span><div><a class="toc-card-link" href="#"><span class="toc-chapter-title">Qubits: The Smallest Quantum Data Object</span></a><span class="toc-chapter-subtitle">The qubit as a vector of amplitudes. Amplitude vs probability. Normalization. Why amplitudes can be negative or complex.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">3</span><div><a class="toc-card-link" href="#"><span class="toc-chapter-title">Measurement: From Quantum State to Classical Output</span></a><span class="toc-chapter-subtitle">The Born rule, sampling, shots, and collapse. Measuring in a chosen basis and expectation values.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">4</span><div><a class="toc-card-link" href="#"><span class="toc-chapter-title">Quantum Gates: Legal Moves in the Game</span></a><span class="toc-chapter-subtitle">Unitarity, reversibility, and the common one-qubit gates: X, Y, Z, H, S, T.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">5</span><div><a class="toc-card-link" href="#"><span class="toc-chapter-title">The Bloch Sphere and Rotation Gates <span class="badge-new">New</span></span></a><span class="toc-chapter-subtitle">The Bloch sphere, RX/RY/RZ as parameterized rotations, and the trainable-weight interpretation that all of Part VI needs.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">6</span><div><a class="toc-card-link" href="#"><span class="toc-chapter-title">Quantum Circuits: Programs Made of Gates</span></a><span class="toc-chapter-subtitle">Circuit notation, translating diagrams to code, circuits as model architectures. PennyLane and Qiskit first builds.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part II -->
+<section class="toc-part p2" id="part-ii">
+<header class="toc-part-header p2">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part II</span> <span class="toc-part-sep">&#183;</span> Essential Quantum Ideas for AI</h2>
+<span class="toc-part-count">5 chapters</span>
+<p class="toc-part-subtitle">Superposition, interference, tensor products, multi-qubit gates, entanglement, and reversibility.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">7</span><div><span class="toc-chapter-title">Superposition: Representation Before Computation</span><span class="toc-chapter-subtitle">Superposition without exaggeration. Not "all answers at once"; a distributed representation with careful output extraction.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">8</span><div><span class="toc-chapter-title">Interference: Making Some Answers Louder</span><span class="toc-chapter-subtitle">Amplitudes adding and canceling. Phase kickback as the recurring mechanism behind algorithms.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">9</span><div><span class="toc-chapter-title">Multiple Qubits, Tensor Products, and Multi-Qubit Gates</span><span class="toc-chapter-subtitle">Exponential state spaces, tensor products, CNOT, controlled-U, SWAP, and Toffoli.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">10</span><div><span class="toc-chapter-title">Entanglement: Dependencies Beyond Classical Correlation</span><span class="toc-chapter-subtitle">Product vs entangled states, Bell pairs, measurement dependency, and what distinguishes entanglement from correlation.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">11</span><div><span class="toc-chapter-title">Reversibility, No-Cloning, and Information Flow</span><span class="toc-chapter-subtitle">Why quantum gates are reversible, why unknown states cannot be copied, and what that means for algorithm design.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part III -->
+<section class="toc-part p3" id="part-iii">
+<header class="toc-part-header p3">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part III</span> <span class="toc-part-sep">&#183;</span> Building Quantum Algorithms</h2>
+<span class="toc-part-count">7 chapters</span>
+<p class="toc-part-subtitle">The structure of quantum algorithms and their AI/ML relevance: search, optimization, feature extraction, and objective minimization.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">12</span><div><span class="toc-chapter-title">Quantum Algorithm Design Pattern</span><span class="toc-chapter-subtitle">Prepare, transform, interfere, measure, repeat. Oracles, phase kickback revisited, uncomputation.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">13</span><div><span class="toc-chapter-title">Deutsch-Jozsa Algorithm</span><span class="toc-chapter-subtitle">The first clean demonstration of algorithmic advantage: constant vs balanced functions in one query.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">14</span><div><span class="toc-chapter-title">Grover Search and Amplitude Amplification</span><span class="toc-chapter-subtitle">Quadratic speedup for unstructured search. Amplitude amplification as a general primitive.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">15</span><div><span class="toc-chapter-title">Quantum Fourier Transform, Phase Estimation, and Shor in Brief</span><span class="toc-chapter-subtitle">Periodic structure, phase estimation, and the factoring connection (post-quantum security implication noted).</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">16</span><div><span class="toc-chapter-title">Quantum Linear Algebra and the HHL Algorithm <span class="badge-new">New</span></span></a><span class="toc-chapter-subtitle">HHL, QRAM, the fine print on exponential speedup claims, and the dequantization that followed.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">17</span><div><span class="toc-chapter-title">Hamiltonians, Energy, and Objective Functions</span><span class="toc-chapter-subtitle">Hamiltonians as cost functions. Ground state as optimum. Preparing for VQE and QAOA.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">18</span><div><span class="toc-chapter-title">VQE: Variational Quantum Eigensolver</span><span class="toc-chapter-subtitle">The hybrid quantum-classical loop. Ansatz, energy expectation, classical optimizer, and the ML connection.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part IV -->
+<section class="toc-part p4" id="part-iv">
+<header class="toc-part-header p4">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part IV</span> <span class="toc-part-sep">&#183;</span> Classical Machine Learning Refresher</h2>
+<span class="toc-part-count">4 chapters</span>
+<p class="toc-part-subtitle">A compact ML onramp focused on concepts that map directly to quantum ML. Explicitly skippable for ML-literate readers.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">19</span><div><span class="toc-chapter-title">Machine Learning as Function Learning</span><span class="toc-chapter-subtitle">Data, labels, models, loss, generalization. Classical baselines for toy datasets.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">20</span><div><span class="toc-chapter-title">Feature Spaces and Kernels</span><span class="toc-chapter-subtitle">Feature maps, the kernel trick, SVMs, and kernel matrices. Preparing for quantum kernels.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">21</span><div><span class="toc-chapter-title">Neural Networks and Trainable Models</span><span class="toc-chapter-subtitle">Parameters, gradients, backpropagation. Preparing for variational circuits.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">22</span><div><span class="toc-chapter-title">Generative Models and Sampling</span><span class="toc-chapter-subtitle">Distribution learning, generative vs discriminative. Preparing for quantum generative models.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part V -->
+<section class="toc-part p5" id="part-v">
+<header class="toc-part-header p5">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part V</span> <span class="toc-part-sep">&#183;</span> Encoding Data into Quantum Circuits</h2>
+<span class="toc-part-count">3 chapters</span>
+<p class="toc-part-subtitle">The data-loading problem, feature maps, QRAM, and measurement as feature extraction.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">23</span><div><span class="toc-chapter-title">The Data Loading Problem</span><span class="toc-chapter-subtitle">Why encoding is not free. Basis, angle, amplitude encoding. QRAM and the open feasibility question.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">24</span><div><span class="toc-chapter-title">Quantum Feature Maps</span><span class="toc-chapter-subtitle">Data-dependent circuits, data re-uploading, depth, and expressivity.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">25</span><div><span class="toc-chapter-title">Measurement as Feature Extraction</span><span class="toc-chapter-subtitle">Observables, expectation values, shot noise, and classical post-processing.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part VI -->
+<section class="toc-part p6" id="part-vi">
+<header class="toc-part-header p6">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part VI</span> <span class="toc-part-sep">&#183;</span> Quantum Machine Learning Models</h2>
+<span class="toc-part-count">13 chapters</span>
+<p class="toc-part-subtitle">The full QML model zoo: kernels, variational circuits, QNNs, gradients, barren plateaus, expressivity, equivariant models, tensor networks, reservoir computing, generative models, and RL.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">26</span><div><span class="toc-chapter-title">Quantum Kernels</span><span class="toc-chapter-subtitle">Quantum feature-space similarity, kernel estimation, SVM, and exponential concentration.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">27</span><div><span class="toc-chapter-title">Variational Quantum Circuits</span><span class="toc-chapter-subtitle">Parameterized circuits as trainable models, ansatz design, hybrid optimization.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">28</span><div><span class="toc-chapter-title">Variational Models Are Kernel Methods <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">The encoding-induced kernel, why ansatz choices matter less than encoding choices, and what this means for advantage.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">29</span><div><span class="toc-chapter-title">Quantum Neural Networks</span><span class="toc-chapter-subtitle">QNN structure, hybrid models, and comparison to classical neural networks.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">30</span><div><span class="toc-chapter-title">Gradients, Parameter-Shift, and Training</span><span class="toc-chapter-subtitle">The parameter-shift rule, automatic differentiation, shot noise, and optimization difficulty.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">31</span><div><span class="toc-chapter-title">Barren Plateaus and Trainability</span><span class="toc-chapter-subtitle">Vanishing gradients, the Lie-algebraic DLA criterion (2024), and the barren-plateau/simulability link.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">32</span><div><span class="toc-chapter-title">What Can Quantum Models Learn? Expressivity and Generalization <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Circuits as truncated Fourier series. ICLR 2025 generalization bounds vs classical RFF. Sample complexity.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">33</span><div><span class="toc-chapter-title">Quantum Convolutional and Structured Models</span><span class="toc-chapter-subtitle">QCNNs, local inductive bias, barren-plateau-free design, and the simulability tradeoff (PRX Quantum 2025).</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">34</span><div><span class="toc-chapter-title">Geometric and Equivariant Quantum Machine Learning <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Symmetry-aware ansatze, equivariant gates, inductive bias, and improved trainability.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">35</span><div><span class="toc-chapter-title">Tensor Networks: The Bridge Between Quantum and Classical ML <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">MPS, bond dimension, classical tractability, and the tensor-network classifier.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">36</span><div><span class="toc-chapter-title">Quantum Reservoir Computing <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Fixed quantum reservoirs sidestep barren plateaus. Temporal tasks and linear readouts.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">37</span><div><span class="toc-chapter-title">Quantum Generative Models</span><span class="toc-chapter-subtitle">Born machines, quantum Boltzmann machines, distribution learning, and the 68-qubit advantage claim.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">38</span><div><span class="toc-chapter-title">Quantum Reinforcement Learning</span><span class="toc-chapter-subtitle">Quantum parameterized policies and optimization inside RL loops.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part VII -->
+<section class="toc-part p7" id="part-vii">
+<header class="toc-part-header p7">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part VII</span> <span class="toc-part-sep">&#183;</span> Quantum Optimization for AI</h2>
+<span class="toc-part-count">4 chapters</span>
+<p class="toc-part-subtitle">QAOA, QUBO, annealing, and optimization pipelines for AI tasks.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">39</span><div><span class="toc-chapter-title">QAOA: Quantum Approximate Optimization Algorithm</span><span class="toc-chapter-subtitle">Cost and mixer Hamiltonians, alternating layers, the classical loop, and a MaxCut example.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">40</span><div><span class="toc-chapter-title">QUBO and Ising Formulations</span><span class="toc-chapter-subtitle">Binary objectives, QUBO, Ising models, and mapping AI problems to energy functions.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">41</span><div><span class="toc-chapter-title">Quantum Annealing and Quantum-Inspired Optimization</span><span class="toc-chapter-subtitle">Annealing vs gate-based, and where classical heuristics already win.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">42</span><div><span class="toc-chapter-title">Optimization in AI Pipelines</span><span class="toc-chapter-subtitle">Feature selection, clustering, hyperparameter search, and resource allocation via QUBO.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part VIII -->
+<section class="toc-part p8" id="part-viii">
+<header class="toc-part-header p8">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part VIII</span> <span class="toc-part-sep">&#183;</span> Reality Check: Noise, Hardware, and Limits</h2>
+<span class="toc-part-count">7 chapters</span>
+<p class="toc-part-subtitle">Density matrices, noise, error correction, the 2026 hardware landscape (six modalities including topological), and a rigorous framework for evaluating advantage.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">43</span><div><span class="toc-chapter-title">Density Matrices and Mixed States <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Pure vs mixed states, partial trace, reduced states, and why noise turns pure states mixed.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">44</span><div><span class="toc-chapter-title">Simulators Versus Real Quantum Hardware</span><span class="toc-chapter-subtitle">Ideal vs noisy simulation, shots, connectivity, queues, and circuit depth limits.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">45</span><div><span class="toc-chapter-title">Noise and Error Mitigation</span><span class="toc-chapter-subtitle">Noise channels, decoherence, mitigation techniques, and the mitigation-vs-correction distinction.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">46</span><div><span class="toc-chapter-title">Error Correction and the Road to Fault Tolerance <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Logical qubits, threshold theorem, Willow below-threshold, IBM BB qLDPC, Quantinuum Helios 48-logical, AlphaQubit 2.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">47</span><div><span class="toc-chapter-title">The 2026 Hardware Landscape <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Six modalities: superconducting, trapped-ion, neutral-atom, photonic, silicon-spin, and topological (Majorana 1).</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">48</span><div><span class="toc-chapter-title">Scaling Problems and Simulation Limits</span><span class="toc-chapter-subtitle">Exponential state spaces, tensor-network simulation boundaries, and practical limits.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">49</span><div><span class="toc-chapter-title">What Would Quantum Advantage Mean? Complexity, Dequantization, and Honest Baselines</span><span class="toc-chapter-subtitle">BQP, dequantization, classical surrogates, Bowles-Ahmed-Schuld benchmarking, entanglement-induced advantage (2025), robust dequantization (2024).</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part IX -->
+<section class="toc-part p9" id="part-ix">
+<header class="toc-part-header p9">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part IX</span> <span class="toc-part-sep">&#183;</span> Advanced Topics in Quantum AI</h2>
+<span class="toc-part-count">8 chapters</span>
+<p class="toc-part-subtitle">Quantum data and learning separations, QNLP, quantum transformers, graph learning, scientific ML, neural quantum states, AI for quantum, and domain applications.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">50</span><div><span class="toc-chapter-title">Quantum Data and Learning Quantum Systems</span><span class="toc-chapter-subtitle">Power of data, learning from quantum experiments, classical shadows, and quantum dynamics learning.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">51</span><div><span class="toc-chapter-title">Quantum Natural Language Processing</span><span class="toc-chapter-subtitle">Compositionality, grammar-and-meaning, tensor structure, and sentence circuits.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">52</span><div><span class="toc-chapter-title">Quantum Transformers and Attention <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Quantum attention blocks, and the quantum-hardware vs quantum-inspired-classical distinction (applied skeptically).</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">53</span><div><span class="toc-chapter-title">Quantum Graph Learning</span><span class="toc-chapter-subtitle">Quantum walks, graph kernels, molecular graphs, and graph classification.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">54</span><div><span class="toc-chapter-title">Quantum AI for Scientific Machine Learning</span><span class="toc-chapter-subtitle">Chemistry, materials, and simulation: the most plausible near-term advantage domain.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">55</span><div><span class="toc-chapter-title">Neural Quantum States <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Classical neural networks representing quantum wavefunctions. VMC, transformer wavefunctions, foundation NQS (2025). The baseline for Ch 54.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">56</span><div><span class="toc-chapter-title">AI for Quantum Computing</span><span class="toc-chapter-subtitle">AlphaQubit 2 (near-optimal, real-time decoding), calibration, circuit search, and LLM-assisted coding.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">57</span><div><span class="toc-chapter-title">Quantum AI Across Domains <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Drug discovery (fastest-growing), finance, high-energy physics, and industrial optimization, all read through the claim-vs-proven lens.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part X -->
+<section class="toc-part p10" id="part-x">
+<header class="toc-part-header p10">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part X</span> <span class="toc-part-sep">&#183;</span> Quantum AI Software, Hardware Access, and Research Practice <span class="badge-new">New</span></h2>
+<span class="toc-part-count">4 chapters</span>
+<p class="toc-part-subtitle">The engineering and research-practice spine: reproducible environments, AI-assisted coding, real-hardware access, GPU/JIT acceleration, benchmarking, and statistics.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">58</span><div><span class="toc-chapter-title">The Quantum AI Development Environment and AI-Assisted Coding <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Pinned envs, SDK decision map, testing quantum code, CI for notebooks, and the Build-With-AI (vibe coding) discipline.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">59</span><div><span class="toc-chapter-title">Compiling, Transpiling, and Running on Real Hardware <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Transpilation, OpenQASM 3 / QIR / primitives, Qiskit 2.3 C++ transpiler, Mitiq, and access recipes for IBM/Braket/IonQ.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">60</span><div><span class="toc-chapter-title">Performance, Scale, and Differentiable Quantum Programming <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Backend selection, Catalyst/JAX/lightning.gpu/CUDA-Q, shot-budget optimization, and circuit cutting.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">61</span><div><span class="toc-chapter-title">Datasets, Benchmarks, and the Statistics of Quantum Experiments <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Shared benchmark harness, shot-noise statistics, bootstrap CIs, tests for advantage, and experiment tracking.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Part XI -->
+<section class="toc-part p11" id="part-xi">
+<header class="toc-part-header p11">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Part XI</span> <span class="toc-part-sep">&#183;</span> Capstone Projects</h2>
+<span class="toc-part-count">8 chapters</span>
+<p class="toc-part-subtitle">Design, implement, evaluate, and explain complete quantum AI experiments with honest baselines, reproducible code, and the research-practice tools of Part X.</p>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">62</span><div><span class="toc-chapter-title">How to Build a Quantum ML Experiment</span><span class="toc-chapter-subtitle">Research question, dataset, baseline, model, metrics, ablation, noise analysis, and reproducibility. The shared harness.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">63</span><div><span class="toc-chapter-title">Capstone 1: Quantum Kernel Classifier</span><span class="toc-chapter-subtitle">Dataset, classical baselines, quantum feature map, kernel SVM, paper-style report.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">64</span><div><span class="toc-chapter-title">Capstone 2: Variational Quantum Classifier</span><span class="toc-chapter-subtitle">Ansatz design, training curves, classical comparison. Reproducible notebook and report.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">65</span><div><span class="toc-chapter-title">Capstone 3: Quantum Generative Model</span><span class="toc-chapter-subtitle">Born machine, distribution learning, sample evaluation, and failure analysis.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">66</span><div><span class="toc-chapter-title">Capstone 4: Quantum Optimization for AI</span><span class="toc-chapter-subtitle">QUBO / QAOA / quantum-inspired solver for feature selection, clustering, or scheduling, with a classical comparison.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">67</span><div><span class="toc-chapter-title">Capstone 5: Noise-Aware Quantum ML Study <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Ideal vs noisy vs hardware runs, mitigation applied and measured, shot-count sensitivity analysis.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">68</span><div><span class="toc-chapter-title">Capstone 6: Reproduce a Published Result with an AI Copilot <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">End-to-end reproduction with error bars, a tuned classical baseline, and an explicit dequantization assessment. The copilot's contributions and corrections both documented.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">69</span><div><span class="toc-chapter-title">Final Perspective: What Quantum AI Is Today</span><span class="toc-chapter-subtitle">Mature, experimental, overhyped, and worth learning: an honest map of the field and how to keep studying.</span></div></div></li>
+</ol>
+</section>
+
+<!-- Back Matter / Appendices -->
+<section class="toc-part front-matter" id="appendices">
+<header class="toc-part-header front-matter">
+<h2 class="toc-part-title"><span class="toc-part-prefix">Appendices &amp; Back Matter</span></h2>
+<span class="toc-part-count">6 appendices</span>
+</header>
+<ol class="toc-chapter-list">
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">A</span><div><span class="toc-chapter-title">Linear Algebra and Probability Reference</span><span class="toc-chapter-subtitle">Full treatment behind Ch 0: vector spaces, unitarity, spectral decomposition, tensor products, and the book's key proof sketches.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">B</span><div><span class="toc-chapter-title">Notation, Symbols, and Dirac Notation Reference</span><span class="toc-chapter-subtitle">Complete symbol table, Dirac notation alongside vector/matrix forms.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">C</span><div><span class="toc-chapter-title">Environment Setup and the Companion Repository</span><span class="toc-chapter-subtitle">Pinned versions, test suite, CI setup, hardware access, and how to use the companion repo.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">D</span><div><span class="toc-chapter-title">Solutions and Instructor Resources</span><span class="toc-chapter-subtitle">Solution sketches, grading rubrics, the dependency graph in full, slides, and problem sets.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">E</span><div><span class="toc-chapter-title">The Quantum AI Cookbook <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">All Recipe Boxes consolidated and indexed by task: encode, estimate, diagnose, run, align, track.</span></div></div></li>
+<li class="toc-chapter"><div class="toc-chapter-head"><span class="toc-chapter-num">F</span><div><span class="toc-chapter-title">Reproduce-the-Paper Index and Research-Practice Checklist <span class="badge-new">New</span></span><span class="toc-chapter-subtitle">Curated reproduction exercises and a one-page checklist: pinned env, tests, seeds, construct-matched metrics, error bars, honest baselines.</span></div></div></li>
+</ol>
+</section>
+
+</main>
+
+<footer>
+<p class="footer-title">Building Quantum AI: From Qubits to Quantum Machine Learning, First Edition</p>
+<p>&#169; 2026 Alexander Apartsin &#183; <a href="index.html">Book Home</a></p>
+<p>Part of the <a href="https://apartsin.com" rel="noopener" target="_blank">Hands-On AI Science</a> series</p>
+</footer>
+
+</body>
+</html>

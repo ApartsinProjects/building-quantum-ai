@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="Building Quantum AI: From Qubits to Quantum Machine Learning. A graduate-level guide to quantum computing, quantum machine learning, and quantum AI, with runnable code, honest baselines, and a software engineering spine." name="description"/>
+<title>Building Quantum AI: From Qubits to Quantum Machine Learning</title>
+<meta content="Building Quantum AI: From Qubits to Quantum Machine Learning" property="og:title"/>
+<meta content="A graduate-level guide to quantum computing, quantum ML, and quantum AI, with runnable code and an evaluation-first conscience." property="og:description"/>
+<meta content="https://quantumbook.apartsin.com/" property="og:url"/>
+<meta content="book" property="og:type"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: radial-gradient(ellipse at 28% 12%, #0d1f3c 0%, #080f22 48%, #040811 100%);
+    color: #dce5ee;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Quantum interference / wave-function background motif */
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        repeating-linear-gradient(0deg,   rgba(140, 100, 230, 0.028) 0, rgba(140, 100, 230, 0.028) 1px, transparent 1px, transparent 56px),
+        repeating-linear-gradient(90deg,  rgba(140, 100, 230, 0.028) 0, rgba(140, 100, 230, 0.028) 1px, transparent 1px, transparent 56px),
+        repeating-linear-gradient(45deg,  rgba(80, 160, 220, 0.018) 0, rgba(80, 160, 220, 0.018) 1px, transparent 1px, transparent 80px),
+        repeating-linear-gradient(-45deg, rgba(80, 160, 220, 0.018) 0, rgba(80, 160, 220, 0.018) 1px, transparent 1px, transparent 80px),
+        radial-gradient(ellipse at center, transparent 38%, rgba(4, 8, 17, 0.7) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cover-wrap {
+    position: relative;
+    z-index: 2;
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Hero */
+.hero {
+    min-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4rem 0 3rem;
+    animation: coverFadeIn 0.9s ease-out both;
+}
+@keyframes coverFadeIn {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .hero, .part-card { animation: none !important; transition: none !important; }
+}
+
+.edition-pill {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(0.66rem, 1.4vw, 0.8rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.28em;
+    color: rgba(170, 140, 240, 0.75);
+    border: 1px solid rgba(170, 140, 240, 0.22);
+    border-radius: 100px;
+    padding: 0.4rem 1.3rem;
+    margin-bottom: 1.6rem;
+    display: inline-block;
+}
+
+.cover-title {
+    font-family: 'Cinzel', Georgia, serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5.2vw, 3.4rem);
+    line-height: 1.18;
+    color: #ecf1f8;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.55rem;
+    text-shadow: 0 0 40px rgba(150, 110, 240, 0.25), 0 2px 4px rgba(0,0,0,0.5);
+}
+.cover-title .title-arc {
+    display: block;
+    font-size: clamp(1.15rem, 2.9vw, 1.85rem);
+    font-weight: 500;
+    margin-top: 0.45rem;
+    background: linear-gradient(90deg, #8ab4f8 0%, #b390f5 35%, #e07ac8 70%, #f5a76e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #b390f5;
+}
+
+.cover-subtitle {
+    font-size: clamp(1.18rem, 2.7vw, 1.58rem);
+    font-weight: 500;
+    color: rgba(229, 238, 246, 0.92);
+    max-width: 680px;
+    margin: 1.1rem auto 0;
+    line-height: 1.5;
+}
+
+.cover-separator {
+    margin: 1.6rem auto 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 220px;
+}
+.cover-separator::before, .cover-separator::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(170, 140, 240, 0.4), transparent);
+}
+.cover-separator span { color: rgba(170, 140, 240, 0.6); font-size: 0.8rem; line-height: 1; }
+
+.cover-authors {
+    margin: 0 auto;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(220, 229, 238, 0.72);
+    letter-spacing: 0.02em;
+}
+.cover-authors a {
+    color: rgba(229, 238, 246, 0.9);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(170, 140, 240, 0.3);
+    transition: color 0.25s, border-color 0.25s;
+}
+.cover-authors a:hover { color: #c4a8f8; border-bottom-color: rgba(170, 140, 240, 0.6); }
+
+.cover-promise {
+    font-size: clamp(1.04rem, 2vw, 1.22rem);
+    color: rgba(220, 229, 238, 0.88);
+    max-width: 700px;
+    margin: 1.7rem auto 0;
+    line-height: 1.75;
+}
+
+.cover-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2.3rem;
+}
+.btn-start, .btn-contents, .btn-amazon {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 0.85rem 2.1rem;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+.btn-start {
+    color: #0a0618;
+    background: linear-gradient(120deg, #8ab4f8 0%, #b390f5 55%, #e07ac8 130%);
+    box-shadow: 0 6px 26px rgba(150, 110, 240, 0.30);
+}
+.btn-start:hover, .btn-start:focus { transform: translateY(-2px); box-shadow: 0 10px 34px rgba(150, 110, 240, 0.45); color: #0a0618; }
+.btn-contents {
+    color: rgba(220, 229, 238, 0.85);
+    border: 1px solid rgba(170, 140, 240, 0.35);
+    background: transparent;
+}
+.btn-contents:hover, .btn-contents:focus { color: #eaf3fa; border-color: rgba(170, 140, 240, 0.7); background: rgba(150, 110, 240, 0.08); }
+.btn-amazon {
+    color: #2a1a05;
+    background: linear-gradient(120deg, #f0c27a 0%, #e6a84e 100%);
+    box-shadow: 0 6px 26px rgba(230, 168, 78, 0.28);
+}
+.btn-amazon:hover, .btn-amazon:focus { transform: translateY(-2px); box-shadow: 0 10px 34px rgba(230, 168, 78, 0.42); color: #2a1a05; }
+
+.cover-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+    margin-top: 2.4rem;
+    font-size: 0.92rem;
+    color: rgba(220, 229, 238, 0.45);
+    letter-spacing: 0.05em;
+}
+
+/* Section titles */
+.cover-section-title {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+    font-weight: 700;
+    color: #dfeaf4;
+    text-align: center;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.4rem;
+}
+.cover-section-sub {
+    text-align: center;
+    font-style: italic;
+    color: rgba(220, 229, 238, 0.55);
+    font-size: 1.02rem;
+    margin: 0 0 2rem;
+}
+
+/* Part cards */
+.parts-section { padding: 2.5rem 0 1.5rem; }
+.part-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.1rem;
+}
+.part-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: rgba(12, 20, 42, 0.72);
+    border: 1px solid rgba(170, 140, 240, 0.14);
+    border-radius: 12px;
+    padding: 1.5rem 1.4rem 1.3rem;
+    color: inherit;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.part-card:hover, .part-card:focus { transform: translateY(-4px); border-color: rgba(170, 140, 240, 0.5); box-shadow: 0 14px 36px rgba(0,0,0,0.45); }
+.part-card.p1:hover, .part-card.p1:focus { border-color: #7fc4c0; }
+.part-card.p2:hover, .part-card.p2:focus { border-color: #b390f5; }
+.part-card.p3:hover, .part-card.p3:focus { border-color: #8ab4f8; }
+.part-card.p4:hover, .part-card.p4:focus { border-color: #e07ac8; }
+.part-card.p5:hover, .part-card.p5:focus { border-color: #f5a76e; }
+.part-card.p6:hover, .part-card.p6:focus { border-color: #7fc4c0; }
+
+.part-card .part-roman {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-bottom: 0.55rem;
+    color: #b390f5;
+}
+.part-card.p1 .part-roman { color: #7fc4c0; }
+.part-card.p2 .part-roman { color: #b390f5; }
+.part-card.p3 .part-roman { color: #8ab4f8; }
+.part-card.p4 .part-roman { color: #e07ac8; }
+.part-card.p5 .part-roman { color: #f5a76e; }
+.part-card.p6 .part-roman { color: #7fc4c0; }
+
+.part-card h3 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 1.06rem;
+    font-weight: 700;
+    color: #e9f1f8;
+    margin: 0 0 0.55rem;
+    line-height: 1.35;
+}
+.part-card p {
+    font-size: 0.99rem;
+    color: rgba(220, 229, 238, 0.72);
+    line-height: 1.55;
+    margin: 0 0 1rem;
+    flex-grow: 1;
+}
+.part-card .part-count {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.74rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: rgba(170, 140, 240, 0.8);
+}
+.part-card.p1 .part-count { color: #7fc4c0; }
+.part-card.p2 .part-count { color: #b390f5; }
+.part-card.p3 .part-count { color: #8ab4f8; }
+.part-card.p4 .part-count { color: #e07ac8; }
+.part-card.p5 .part-count { color: #f5a76e; }
+.part-card.p6 .part-count { color: #7fc4c0; }
+
+/* How it teaches */
+.teaches-section { padding: 3rem 0 2rem; }
+.teach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
+.teach-item {
+    background: rgba(12, 20, 42, 0.5);
+    border: 1px solid rgba(170, 140, 240, 0.1);
+    border-radius: 10px;
+    padding: 1.15rem 1.1rem;
+}
+.teach-item .teach-glyph { font-size: 1.25rem; line-height: 1; display: block; margin-bottom: 0.5rem; color: #b390f5; }
+.teach-item h3 {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #dfeaf4;
+    margin: 0 0 0.45rem;
+}
+.teach-item p { font-size: 0.95rem; color: rgba(220, 229, 238, 0.68); line-height: 1.5; margin: 0; }
+
+/* Series section */
+.series-section { padding: 3rem 0 1.5rem; }
+.series-card { cursor: default; }
+.series-card:hover { transform: none !important; }
+.series-card .series-arc { font-size: 0.95rem; color: rgba(220, 229, 238, 0.7); line-height: 1.5; margin: 0 0 1rem; flex-grow: 1; }
+.series-card .series-links { font-family: 'Cinzel', Georgia, serif; font-size: 0.74rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
+.series-card .series-links a { color: #b390f5; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+.series-card .series-links a:hover { border-bottom-color: #b390f5; }
+.series-card .series-here { font-family: 'Cinzel', Georgia, serif; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #b390f5; }
+.series-cta { text-align: center; margin-top: 1.6rem; font-size: 1rem; color: rgba(220, 229, 238, 0.7); }
+.series-cta a { color: #b390f5; text-decoration: none; border-bottom: 1px solid rgba(170, 140, 240, 0.3); }
+.series-cta a:hover { border-bottom-color: rgba(170, 140, 240, 0.7); }
+
+/* Footer */
+footer.cover-footer {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 2.5rem 1.5rem 2.2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(170, 140, 240, 0.12);
+    color: rgba(220, 229, 238, 0.45);
+    font-size: 0.9rem;
+    background: transparent;
+}
+footer.cover-footer p { margin: 0 0 0.3rem; text-align: center; }
+footer.cover-footer .footer-title { font-family: 'Cinzel', Georgia, serif; font-size: 0.82rem; letter-spacing: 0.1em; color: rgba(220, 229, 238, 0.55); }
+footer.cover-footer a { color: rgba(170, 140, 240, 0.75); text-decoration: none; }
+footer.cover-footer a:hover { color: #c4a8f8; }
+</style>
+</head>
+<body>
+
+<div class="cover-wrap">
+
+<header class="hero">
+<span class="edition-pill">Hands-On AI Science Series &#183; 2026</span>
+<h1 class="cover-title">Building Quantum AI
+<span class="title-arc">From Qubits to Quantum Machine Learning</span></h1>
+<p class="cover-subtitle">A graduate-level guide to quantum computing, quantum machine learning, and quantum AI, with runnable code and an evaluation-first conscience.</p>
+<div aria-hidden="true" class="cover-separator"><span>&#10022;</span></div>
+<p class="cover-authors">
+<a href="front-matter/about-authors.html">Alexander (Sasha) Apartsin, Ph.D.</a>
+</p>
+<p class="cover-promise">Quantum AI is not magic AI. It is machine learning built on a different computational substrate, and its advantage over classical computing is something to be demonstrated, not assumed. This book is one connected journey: from the mathematical rules of quantum computing through the algorithms, models, and engineering practice of quantum AI, with honest baselines, runnable code, and the real hardware and software stack at every step.</p>
+<nav aria-label="Primary" class="cover-cta">
+<a class="btn-start" href="toc.html">Start Reading</a>
+<a class="btn-contents" href="toc.html">Contents</a>
+</nav>
+<div class="cover-meta">
+<span>11 parts</span>
+<span>69 chapters</span>
+<span>6 appendices</span>
+<span>Capstone projects</span>
+</div>
+</header>
+
+<section aria-labelledby="parts-heading" class="parts-section">
+<h2 class="cover-section-title" id="parts-heading">The Eleven-Part Arc</h2>
+<p class="cover-section-sub">From the mathematical rules of the quantum game to production-grade quantum AI software, in one continuous build.</p>
+<div class="part-grid">
+
+<a class="part-card p1" href="toc.html#part-i-iii">
+<span class="part-roman">I-III</span>
+<h3>Quantum Computing Foundations</h3>
+<p>The rules of the game: qubits, measurement, gates, rotation gates, circuits, superposition, interference, entanglement, and the algorithms (Grover, QFT, HHL, VQE) that put them to work.</p>
+<span class="part-count">Ch 0-18 &#183; 19 chapters</span>
+</a>
+
+<a class="part-card p2" href="toc.html#part-iv-v">
+<span class="part-roman">IV-V</span>
+<h3>Classical ML Refresher and Data Encoding</h3>
+<p>A compact ML onramp for quantum readers, then the data-loading problem: why encoding classical data into quantum circuits is not free, what it costs, and what QRAM does and does not solve.</p>
+<span class="part-count">Ch 19-25 &#183; 7 chapters</span>
+</a>
+
+<a class="part-card p3" href="toc.html#part-vi-vii">
+<span class="part-roman">VI-VII</span>
+<h3>Quantum ML Models and Optimization</h3>
+<p>Quantum kernels, variational circuits, QNNs, barren plateaus, expressivity, equivariant models, tensor networks, reservoir computing, generative models, reinforcement learning, QAOA, and QUBO.</p>
+<span class="part-count">Ch 26-42 &#183; 17 chapters</span>
+</a>
+
+<a class="part-card p4" href="toc.html#part-viii">
+<span class="part-roman">VIII</span>
+<h3>Reality Check: Noise, Hardware, and Limits</h3>
+<p>Density matrices, simulators, noise channels, error mitigation versus correction, the 2026 hardware landscape (six modalities), fault-tolerance roadmaps, and a rigorous framework for evaluating advantage.</p>
+<span class="part-count">Ch 43-49 &#183; 7 chapters</span>
+</a>
+
+<a class="part-card p5" href="toc.html#part-ix">
+<span class="part-roman">IX</span>
+<h3>Advanced Topics in Quantum AI</h3>
+<p>Quantum data and learning separations, QNLP, quantum transformers, graph learning, scientific ML, neural quantum states, AI for quantum, and a survey of where quantum AI is actually applied.</p>
+<span class="part-count">Ch 50-57 &#183; 8 chapters</span>
+</a>
+
+<a class="part-card p6" href="toc.html#part-x-xi">
+<span class="part-roman">X-XI</span>
+<h3>Software, Practice, and Capstones</h3>
+<p>The engineering spine: reproducible environments, AI-assisted coding, real-hardware access, GPU/JIT acceleration, benchmarking and statistics, and six capstone projects including a reproduce-a-paper lab.</p>
+<span class="part-count">Ch 58-69 &#183; 12 chapters</span>
+</a>
+
+</div>
+</section>
+
+<section aria-labelledby="teaches-heading" class="teaches-section">
+<h2 class="cover-section-title" id="teaches-heading">How This Book Teaches</h2>
+<p class="cover-section-sub">Seven forms per concept, and an evaluation-first conscience that runs from Chapter 1 to the final capstone.</p>
+<div class="teach-grid">
+
+<div class="teach-item">
+<span aria-hidden="true" class="teach-glyph">&#9881;</span>
+<h3>Seven Forms per Concept</h3>
+<p>Plain English, intuition, analogy, diagram, equation, code, and the classical check: "could a classical computer do this?" No concept is left at the analogy stage.</p>
+</div>
+
+<div class="teach-item">
+<span aria-hidden="true" class="teach-glyph">&#9889;</span>
+<h3>Runnable, Tested Code</h3>
+<p>Every listing is a runnable, version-pinned, tested notebook. Stage 1 builds from scratch in NumPy. Stage 2 uses PennyLane and Qiskit. Stage 3 adds honest classical baselines. Stage 4 is a full experiment.</p>
+</div>
+
+<div class="teach-item">
+<span aria-hidden="true" class="teach-glyph">&#9998;</span>
+<h3>Evaluation First</h3>
+<p>Quantum AI is not magic AI. Every model meets a tuned classical baseline. Every advantage claim is held to dequantization, classical-surrogate, and benchmarking standards from the published literature.</p>
+</div>
+
+<div class="teach-item">
+<span aria-hidden="true" class="teach-glyph">&#128187;</span>
+<h3>AI-Copilot Discipline</h3>
+<p>Build-With-AI boxes show how to scaffold circuits, translate between SDKs, and debug with a copilot, followed immediately by the verification that keeps the code correct.</p>
+</div>
+
+<div class="teach-item">
+<span aria-hidden="true" class="teach-glyph">&#128270;</span>
+<h3>Research Frontiers</h3>
+<p>Every advanced chapter closes with the open questions, so a graduate student can find a thesis-scale problem. The most recent results (2024-2026) are integrated throughout.</p>
+</div>
+
+</div>
+</section>
+
+<section aria-labelledby="series-heading" class="series-section">
+<h2 class="cover-section-title" id="series-heading">The Hands-On AI Science Series</h2>
+<p class="cover-section-sub">Building Quantum AI is one of five connected books, each a deep, build-it-yourself guide to a major field of AI.</p>
+<p class="cover-promise" style="margin-top:0;">Hands-On AI Science is a series of in-depth guides to the major fields of artificial intelligence. Every book goes deep into the theory, models, and internals, covering the classical foundations and the most recent ideas, then shows you how to build each one in Python with the modern libraries and tools that get the job done. The writing stays plain and light (illustrations, analogies, mental models, worked examples, and a little fun) without trading away rigor or coverage. Each volume is self-contained and complete enough to anchor a full course on its subject.</p>
+<div class="part-grid">
+
+<div class="part-card series-card p1">
+<h3>Building Language AI</h3>
+<p class="series-arc">From Tokens to Agents.</p>
+<span class="series-links"><a href="https://llmbook.apartsin.com" rel="noopener" target="_blank">Read online</a> &#183; <a href="https://www.amazon.com/dp/B0H1MQH23D" rel="noopener" target="_blank">Kindle</a></span>
+</div>
+
+<div class="part-card series-card p2">
+<h3>Building Vision AI</h3>
+<p class="series-arc">From Pixels to Generative Models.</p>
+<span class="series-links"><a href="https://visionbook.apartsin.com" rel="noopener" target="_blank">Read online</a> &#183; <a href="https://www.amazon.com/dp/B0H5BT8Y75" rel="noopener" target="_blank">Kindle</a></span>
+</div>
+
+<div class="part-card series-card p3">
+<h3>Building Temporal AI</h3>
+<p class="series-arc">From Forecasting to Sequential Decision Making.</p>
+<span class="series-links"><a href="https://temporalbook.apartsin.com" rel="noopener" target="_blank">Read online</a> &#183; <a href="https://www.amazon.com/dp/B0H5KRJFCD" rel="noopener" target="_blank">Kindle</a></span>
+</div>
+
+<div class="part-card series-card p4">
+<h3>Building Scalable AI</h3>
+<p class="series-arc">From Big Data Algorithms to Distributed Intelligence.</p>
+<span class="series-links"><a href="https://scalablebook.apartsin.com" rel="noopener" target="_blank">Read online</a> &#183; <a href="https://www.amazon.com/dp/B0H5Q1471R" rel="noopener" target="_blank">Kindle</a></span>
+</div>
+
+<div class="part-card series-card p5">
+<h3>Building Quantum AI</h3>
+<p class="series-arc">From Qubits to Quantum Machine Learning.</p>
+<span class="series-here">You are here</span>
+</div>
+
+</div>
+<p class="series-cta">More at <a href="https://apartsin.com" rel="noopener" target="_blank">apartsin.com</a></p>
+</section>
+
+</div>
+
+<footer class="cover-footer">
+<p class="footer-title">Building Quantum AI: From Qubits to Quantum Machine Learning, First Edition</p>
+<p>&#169; 2026 Alexander Apartsin &#183; <a href="toc.html">Contents</a></p>
+<p>Part of the <a href="https://apartsin.com" rel="noopener" target="_blank">Hands-On AI Science</a> series</p>
+</footer>
+
+</body>
+</html>
