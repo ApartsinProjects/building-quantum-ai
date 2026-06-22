@@ -316,8 +316,18 @@ body::before {
 .series-card .series-arc { font-size: 0.95rem; color: rgba(220, 229, 238, 0.7); line-height: 1.5; margin: 0 0 1rem; flex-grow: 1; }
 .series-card .series-links { font-family: 'Cinzel', Georgia, serif; font-size: 0.74rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
 .series-card .series-links a { color: #b390f5; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-.series-card .series-links a:hover { border-bottom-color: #b390f5; }
+.series-card .series-links a:hover { border-bottom-color: currentColor; }
+.series-card.part-1 .series-links a { color: #6fd0cd; }
+.series-card.part-2 .series-links a { color: #d9bd7a; }
+.series-card.part-3 .series-links a { color: #b3a2f5; }
+.series-card.part-4 .series-links a { color: #ef9eb4; }
+.series-card.part-5 .series-links a { color: #b390f5; }
 .series-card .series-here { font-family: 'Cinzel', Georgia, serif; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #b390f5; }
+.series-card.part-1 .series-here { color: #6fd0cd; }
+.series-card.part-2 .series-here { color: #d9bd7a; }
+.series-card.part-3 .series-here { color: #b3a2f5; }
+.series-card.part-4 .series-here { color: #ef9eb4; }
+.series-card.part-5 .series-here { color: #b390f5; }
 .series-cta { text-align: center; margin-top: 1.6rem; font-size: 1rem; color: rgba(220, 229, 238, 0.7); }
 .series-cta a { color: #b390f5; text-decoration: none; border-bottom: 1px solid rgba(170, 140, 240, 0.3); }
 .series-cta a:hover { border-bottom-color: rgba(170, 140, 240, 0.7); }
@@ -345,7 +355,7 @@ footer.cover-footer a:hover { color: #c4a8f8; }
 <div class="cover-wrap">
 
 <header class="hero">
-<span class="edition-pill">Hands-On AI Science Series &#183; 2026</span>
+<span class="edition-pill">First Edition &#183; 2026</span>
 <h1 class="cover-title">Building Quantum AI
 <span class="title-arc">From Qubits to Quantum Machine Learning</span></h1>
 <p class="cover-subtitle">Deep theory, hands-on code, and an evaluation-first conscience: quantum computing, quantum machine learning, and quantum AI from first principles to the research frontier.</p>
@@ -460,38 +470,38 @@ footer.cover-footer a:hover { color: #c4a8f8; }
 <p class="cover-promise" style="margin-top:0;">Hands-On AI Science is a series of in-depth guides to the major fields of artificial intelligence. Every book goes deep into the theory, models, and internals, covering the classical foundations and the most recent ideas, then shows you how to build each one in Python with the modern libraries and tools that get the job done. The writing stays plain and light (illustrations, analogies, mental models, worked examples, and a little fun) without trading away rigor or coverage. Each volume is self-contained and complete enough to anchor a full course on its subject.</p>
 <div class="part-grid">
 
-<div class="part-card series-card p1">
+<div class="part-card series-card part-1">
 <h3>Building Language AI</h3>
 <p class="series-arc">From Tokens to Agents.</p>
 <span class="series-links"><a href="https://llmbook.apartsin.com" rel="noopener" target="_blank">Read online</a> &#183; <a href="https://www.amazon.com/dp/B0H1MQH23D" rel="noopener" target="_blank">Kindle</a></span>
 </div>
 
-<div class="part-card series-card p2">
+<div class="part-card series-card part-2">
 <h3>Building Vision AI</h3>
 <p class="series-arc">From Pixels to Generative Models.</p>
 <span class="series-links"><a href="https://visionbook.apartsin.com" rel="noopener" target="_blank">Read online</a> &#183; <a href="https://www.amazon.com/dp/B0H5BT8Y75" rel="noopener" target="_blank">Kindle</a></span>
 </div>
 
-<div class="part-card series-card p3">
+<div class="part-card series-card part-3">
 <h3>Building Temporal AI</h3>
 <p class="series-arc">From Forecasting to Sequential Decision Making.</p>
 <span class="series-links"><a href="https://temporalbook.apartsin.com" rel="noopener" target="_blank">Read online</a> &#183; <a href="https://www.amazon.com/dp/B0H5KRJFCD" rel="noopener" target="_blank">Kindle</a></span>
 </div>
 
-<div class="part-card series-card p4">
+<div class="part-card series-card part-4">
 <h3>Building Scalable AI</h3>
 <p class="series-arc">From Big Data Algorithms to Distributed Intelligence.</p>
 <span class="series-links"><a href="https://scalablebook.apartsin.com" rel="noopener" target="_blank">Read online</a> &#183; <a href="https://www.amazon.com/dp/B0H5Q1471R" rel="noopener" target="_blank">Kindle</a></span>
 </div>
 
-<div class="part-card series-card p5">
+<div class="part-card series-card part-5">
 <h3>Building Quantum AI</h3>
 <p class="series-arc">From Qubits to Quantum Machine Learning.</p>
 <span class="series-here">You are here</span>
 </div>
 
 </div>
-<p class="series-cta">More at <a href="https://apartsin.com" rel="noopener" target="_blank">apartsin.com</a></p>
+<p class="series-cta">Read the full <a href="front-matter/about-the-series.html">About the Hands-On AI Science Series</a> note.</p>
 </section>
 
 </div>
