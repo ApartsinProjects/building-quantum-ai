@@ -3,19 +3,22 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<meta content="Building Quantum AI: From Qubits to Quantum Machine Learning. Deep theory meets hands-on practice: quantum computing, quantum machine learning, and quantum AI, with runnable code, honest baselines, and a software engineering spine." name="description"/>
+<meta content="Building Quantum AI: From Qubits to Quantum Machine Learning. A rigorous guide to quantum computing and quantum machine learning, from qubit mathematics and quantum algorithms to variational models, real hardware, and the honest evaluation of quantum advantage." name="description"/>
 <title>Building Quantum AI: From Qubits to Quantum Machine Learning</title>
 <meta content="Building Quantum AI: From Qubits to Quantum Machine Learning" property="og:title"/>
-<meta content="Deep theory meets hands-on practice: quantum computing, quantum ML, and quantum AI, with runnable code and an evaluation-first conscience." property="og:description"/>
+<meta content="A rigorous guide to quantum computing and quantum machine learning, from qubit mathematics and quantum algorithms to variational models, real hardware, and the honest evaluation of quantum advantage." property="og:description"/>
+<meta content="https://quantumbook.apartsin.com/images/book-cover.svg" property="og:image"/>
 <meta content="https://quantumbook.apartsin.com/" property="og:url"/>
 <meta content="book" property="og:type"/>
 <meta content="summary_large_image" name="twitter:card"/>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 
-*, *::before, *::after { box-sizing: border-box; }
+/* Cover-page styles. All rules are scoped under body.cover-page so a
+   shared stylesheet can govern chapter pages while the cover carries
+   the dark house-cover look. */
 
-body {
+body.cover-page {
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -27,7 +30,7 @@ body {
 }
 
 /* Quantum interference / wave-function background motif */
-body::before {
+body.cover-page::before {
     content: '';
     position: fixed;
     inset: 0;
@@ -41,7 +44,7 @@ body::before {
     z-index: 1;
 }
 
-.cover-wrap {
+body.cover-page .cover-wrap {
     position: relative;
     z-index: 2;
     max-width: 1060px;
@@ -49,8 +52,11 @@ body::before {
     padding: 0 1.5rem;
 }
 
-/* Hero */
-.hero {
+body.cover-page .cover-image-wrapper { margin: 0 auto 1.4rem; }
+body.cover-page .cover-image { max-width: 280px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 18px 48px rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.15); display: block; margin: 0 auto; }
+@media (max-width: 600px) { body.cover-page .cover-image { max-width: 200px; } }
+
+body.cover-page .hero {
     min-height: 88vh;
     display: flex;
     flex-direction: column;
@@ -60,15 +66,18 @@ body::before {
     padding: 4rem 0 3rem;
     animation: coverFadeIn 0.9s ease-out both;
 }
+
 @keyframes coverFadeIn {
     from { opacity: 0; transform: translateY(14px); }
     to   { opacity: 1; transform: none; }
 }
+
 @media (prefers-reduced-motion: reduce) {
-    .hero, .part-card { animation: none !important; transition: none !important; }
+    body.cover-page .hero,
+    body.cover-page .part-card { animation: none !important; transition: none !important; }
 }
 
-.edition-pill {
+body.cover-page .edition-pill {
     font-family: 'Cinzel', Georgia, serif;
     font-size: clamp(0.66rem, 1.4vw, 0.8rem);
     font-weight: 500;
@@ -82,21 +91,18 @@ body::before {
     display: inline-block;
 }
 
-.cover-image-wrapper { margin: 0 auto 1.4rem; }
-.cover-image { max-width: 280px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 18px 48px rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.15); display: block; margin: 0 auto; }
-@media (max-width: 600px) { .cover-image { max-width: 200px; } }
-
-.cover-title {
+body.cover-page .cover-title {
     font-family: 'Cinzel', Georgia, serif;
     font-weight: 700;
     font-size: clamp(2.1rem, 5.2vw, 3.4rem);
     line-height: 1.18;
-    color: #ecf1f8;
+    color: #e9f1f8;
     letter-spacing: 0.02em;
     margin: 0 0 0.55rem;
     text-shadow: 0 0 40px rgba(150, 110, 240, 0.25), 0 2px 4px rgba(0,0,0,0.5);
 }
-.cover-title .title-arc {
+
+body.cover-page .cover-title .title-arc {
     display: block;
     font-size: clamp(1.15rem, 2.9vw, 1.85rem);
     font-weight: 500;
@@ -108,16 +114,17 @@ body::before {
     color: #b390f5;
 }
 
-.cover-subtitle {
+body.cover-page .cover-subtitle {
     font-size: clamp(1.18rem, 2.7vw, 1.58rem);
     font-weight: 500;
-    color: rgba(229, 238, 246, 0.92);
-    max-width: 680px;
+    color: rgba(229, 238, 246, 0.94);
+    max-width: 660px;
     margin: 1.1rem auto 0;
     line-height: 1.5;
+    letter-spacing: 0.01em;
 }
 
-.cover-separator {
+body.cover-page .cover-separator {
     margin: 1.6rem auto 1.1rem;
     display: flex;
     align-items: center;
@@ -125,44 +132,56 @@ body::before {
     gap: 1rem;
     width: 220px;
 }
-.cover-separator::before, .cover-separator::after {
+body.cover-page .cover-separator::before,
+body.cover-page .cover-separator::after {
     content: '';
     flex: 1;
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(170, 140, 240, 0.4), transparent);
 }
-.cover-separator span { color: rgba(170, 140, 240, 0.6); font-size: 0.8rem; line-height: 1; }
+body.cover-page .cover-separator span {
+    color: rgba(170, 140, 240, 0.6);
+    font-size: 0.8rem;
+    line-height: 1;
+}
 
-.cover-authors {
+body.cover-page .cover-authors {
     margin: 0 auto;
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: rgba(220, 229, 238, 0.72);
     letter-spacing: 0.02em;
 }
-.cover-authors a {
+body.cover-page .cover-authors a {
     color: rgba(229, 238, 246, 0.9);
     text-decoration: none;
     border-bottom: 1px solid rgba(170, 140, 240, 0.3);
     transition: color 0.25s, border-color 0.25s;
 }
-.cover-authors a:hover { color: #c4a8f8; border-bottom-color: rgba(170, 140, 240, 0.6); }
+body.cover-page .cover-authors a:hover {
+    color: #c4a8f8;
+    border-bottom-color: rgba(170, 140, 240, 0.6);
+}
+body.cover-page .cover-authors .amp { margin: 0 0.5rem; opacity: 0.45; }
 
-.cover-promise {
+body.cover-page .cover-promise {
     font-size: clamp(1.04rem, 2vw, 1.22rem);
     color: rgba(220, 229, 238, 0.88);
-    max-width: 700px;
+    max-width: 680px;
     margin: 1.7rem auto 0;
     line-height: 1.75;
 }
 
-.cover-cta {
+body.cover-page .cover-cta {
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
     margin-top: 2.3rem;
 }
-.btn-start, .btn-contents, .btn-amazon {
+
+body.cover-page .btn-start,
+body.cover-page .btn-contents,
+body.cover-page .btn-amazon {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 0.95rem;
     font-weight: 700;
@@ -173,26 +192,44 @@ body::before {
     padding: 0.85rem 2.1rem;
     transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
 }
-.btn-start {
+
+body.cover-page .btn-start {
     color: #0a0618;
     background: linear-gradient(120deg, #8ab4f8 0%, #b390f5 55%, #e07ac8 130%);
     box-shadow: 0 6px 26px rgba(150, 110, 240, 0.30);
 }
-.btn-start:hover, .btn-start:focus { transform: translateY(-2px); box-shadow: 0 10px 34px rgba(150, 110, 240, 0.45); color: #0a0618; }
-.btn-contents {
+body.cover-page .btn-start:hover,
+body.cover-page .btn-start:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 34px rgba(150, 110, 240, 0.45);
+    color: #0a0618;
+}
+
+body.cover-page .btn-contents {
     color: rgba(220, 229, 238, 0.85);
     border: 1px solid rgba(170, 140, 240, 0.35);
     background: transparent;
 }
-.btn-contents:hover, .btn-contents:focus { color: #eaf3fa; border-color: rgba(170, 140, 240, 0.7); background: rgba(150, 110, 240, 0.08); }
-.btn-amazon {
+body.cover-page .btn-contents:hover,
+body.cover-page .btn-contents:focus {
+    color: #eaf3fa;
+    border-color: rgba(170, 140, 240, 0.7);
+    background: rgba(150, 110, 240, 0.08);
+}
+
+body.cover-page .btn-amazon {
     color: #2a1a05;
     background: linear-gradient(120deg, #f0c27a 0%, #e6a84e 100%);
     box-shadow: 0 6px 26px rgba(230, 168, 78, 0.28);
 }
-.btn-amazon:hover, .btn-amazon:focus { transform: translateY(-2px); box-shadow: 0 10px 34px rgba(230, 168, 78, 0.42); color: #2a1a05; }
+body.cover-page .btn-amazon:hover,
+body.cover-page .btn-amazon:focus {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 34px rgba(230, 168, 78, 0.42);
+    color: #2a1a05;
+}
 
-.cover-meta {
+body.cover-page .cover-meta {
     display: flex;
     justify-content: center;
     gap: 1.6rem;
@@ -203,8 +240,7 @@ body::before {
     letter-spacing: 0.05em;
 }
 
-/* Section titles */
-.cover-section-title {
+body.cover-page .cover-section-title {
     font-family: 'Cinzel', Georgia, serif;
     font-size: clamp(1.25rem, 2.6vw, 1.7rem);
     font-weight: 700;
@@ -213,7 +249,8 @@ body::before {
     letter-spacing: 0.06em;
     margin: 0 0 0.4rem;
 }
-.cover-section-sub {
+
+body.cover-page .cover-section-sub {
     text-align: center;
     font-style: italic;
     color: rgba(220, 229, 238, 0.55);
@@ -222,13 +259,15 @@ body::before {
 }
 
 /* Part cards */
-.parts-section { padding: 2.5rem 0 1.5rem; }
-.part-grid {
+body.cover-page .parts-section { padding: 2.5rem 0 1.5rem; }
+
+body.cover-page .part-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
     gap: 1.1rem;
 }
-.part-card {
+
+body.cover-page .part-card {
     display: flex;
     flex-direction: column;
     text-decoration: none;
@@ -239,15 +278,20 @@ body::before {
     color: inherit;
     transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
-.part-card:hover, .part-card:focus { transform: translateY(-4px); border-color: rgba(170, 140, 240, 0.5); box-shadow: 0 14px 36px rgba(0,0,0,0.45); }
-.part-card.p1:hover, .part-card.p1:focus { border-color: #7fc4c0; }
-.part-card.p2:hover, .part-card.p2:focus { border-color: #b390f5; }
-.part-card.p3:hover, .part-card.p3:focus { border-color: #8ab4f8; }
-.part-card.p4:hover, .part-card.p4:focus { border-color: #e07ac8; }
-.part-card.p5:hover, .part-card.p5:focus { border-color: #f5a76e; }
-.part-card.p6:hover, .part-card.p6:focus { border-color: #7fc4c0; }
+body.cover-page .part-card:hover,
+body.cover-page .part-card:focus {
+    transform: translateY(-4px);
+    border-color: rgba(170, 140, 240, 0.5);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.45);
+}
+body.cover-page .part-card.p1:hover, body.cover-page .part-card.p1:focus { border-color: #7fc4c0; }
+body.cover-page .part-card.p2:hover, body.cover-page .part-card.p2:focus { border-color: #b390f5; }
+body.cover-page .part-card.p3:hover, body.cover-page .part-card.p3:focus { border-color: #8ab4f8; }
+body.cover-page .part-card.p4:hover, body.cover-page .part-card.p4:focus { border-color: #e07ac8; }
+body.cover-page .part-card.p5:hover, body.cover-page .part-card.p5:focus { border-color: #f5a76e; }
+body.cover-page .part-card.p6:hover, body.cover-page .part-card.p6:focus { border-color: #7fc4c0; }
 
-.part-card .part-roman {
+body.cover-page .part-card .part-roman {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 2rem;
     font-weight: 700;
@@ -255,14 +299,14 @@ body::before {
     margin-bottom: 0.55rem;
     color: #b390f5;
 }
-.part-card.p1 .part-roman { color: #7fc4c0; }
-.part-card.p2 .part-roman { color: #b390f5; }
-.part-card.p3 .part-roman { color: #8ab4f8; }
-.part-card.p4 .part-roman { color: #e07ac8; }
-.part-card.p5 .part-roman { color: #f5a76e; }
-.part-card.p6 .part-roman { color: #7fc4c0; }
+body.cover-page .part-card.p1 .part-roman { color: #7fc4c0; }
+body.cover-page .part-card.p2 .part-roman { color: #b390f5; }
+body.cover-page .part-card.p3 .part-roman { color: #8ab4f8; }
+body.cover-page .part-card.p4 .part-roman { color: #e07ac8; }
+body.cover-page .part-card.p5 .part-roman { color: #f5a76e; }
+body.cover-page .part-card.p6 .part-roman { color: #7fc4c0; }
 
-.part-card h3 {
+body.cover-page .part-card h3 {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 1.06rem;
     font-weight: 700;
@@ -270,14 +314,16 @@ body::before {
     margin: 0 0 0.55rem;
     line-height: 1.35;
 }
-.part-card p {
+
+body.cover-page .part-card p {
     font-size: 0.99rem;
     color: rgba(220, 229, 238, 0.72);
     line-height: 1.55;
     margin: 0 0 1rem;
     flex-grow: 1;
 }
-.part-card .part-count {
+
+body.cover-page .part-card .part-count {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 0.74rem;
     font-weight: 500;
@@ -285,24 +331,38 @@ body::before {
     letter-spacing: 0.14em;
     color: rgba(170, 140, 240, 0.8);
 }
-.part-card.p1 .part-count { color: #7fc4c0; }
-.part-card.p2 .part-count { color: #b390f5; }
-.part-card.p3 .part-count { color: #8ab4f8; }
-.part-card.p4 .part-count { color: #e07ac8; }
-.part-card.p5 .part-count { color: #f5a76e; }
-.part-card.p6 .part-count { color: #7fc4c0; }
+body.cover-page .part-card.p1 .part-count { color: #7fc4c0; }
+body.cover-page .part-card.p2 .part-count { color: #b390f5; }
+body.cover-page .part-card.p3 .part-count { color: #8ab4f8; }
+body.cover-page .part-card.p4 .part-count { color: #e07ac8; }
+body.cover-page .part-card.p5 .part-count { color: #f5a76e; }
+body.cover-page .part-card.p6 .part-count { color: #7fc4c0; }
 
 /* How it teaches */
-.teaches-section { padding: 3rem 0 2rem; }
-.teach-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 1rem; }
-.teach-item {
+body.cover-page .teaches-section { padding: 3rem 0 2rem; }
+
+body.cover-page .teach-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem;
+}
+
+body.cover-page .teach-item {
     background: rgba(12, 20, 42, 0.5);
     border: 1px solid rgba(170, 140, 240, 0.1);
     border-radius: 10px;
     padding: 1.15rem 1.1rem;
 }
-.teach-item .teach-glyph { font-size: 1.25rem; line-height: 1; display: block; margin-bottom: 0.5rem; color: #b390f5; }
-.teach-item h3 {
+
+body.cover-page .teach-item .teach-glyph {
+    font-size: 1.25rem;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #b390f5;
+}
+
+body.cover-page .teach-item h3 {
     font-family: 'Cinzel', Georgia, serif;
     font-size: 0.85rem;
     font-weight: 700;
@@ -311,33 +371,73 @@ body::before {
     color: #dfeaf4;
     margin: 0 0 0.45rem;
 }
-.teach-item p { font-size: 0.95rem; color: rgba(220, 229, 238, 0.68); line-height: 1.5; margin: 0; }
+
+body.cover-page .teach-item p {
+    font-size: 0.95rem;
+    color: rgba(220, 229, 238, 0.68);
+    line-height: 1.5;
+    margin: 0;
+}
 
 /* Series section */
-.series-section { padding: 3rem 0 1.5rem; }
-.series-card { cursor: default; }
-.series-card:hover { transform: none !important; }
-.series-card .series-arc { font-size: 0.95rem; color: rgba(220, 229, 238, 0.7); line-height: 1.5; margin: 0 0 1rem; flex-grow: 1; }
-.series-card .series-links { font-family: 'Cinzel', Georgia, serif; font-size: 0.74rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; }
-.series-card .series-links a { color: #b390f5; text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
-.series-card .series-links a:hover { border-bottom-color: currentColor; }
-.series-card.part-1 .series-links a { color: #6fd0cd; }
-.series-card.part-2 .series-links a { color: #d9bd7a; }
-.series-card.part-3 .series-links a { color: #b3a2f5; }
-.series-card.part-4 .series-links a { color: #ef9eb4; }
-.series-card.part-5 .series-links a { color: #b390f5; }
-.series-card .series-here { font-family: 'Cinzel', Georgia, serif; font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.14em; color: #b390f5; }
-.series-card.part-1 .series-here { color: #6fd0cd; }
-.series-card.part-2 .series-here { color: #d9bd7a; }
-.series-card.part-3 .series-here { color: #b3a2f5; }
-.series-card.part-4 .series-here { color: #ef9eb4; }
-.series-card.part-5 .series-here { color: #b390f5; }
-.series-cta { text-align: center; margin-top: 1.6rem; font-size: 1rem; color: rgba(220, 229, 238, 0.7); }
-.series-cta a { color: #b390f5; text-decoration: none; border-bottom: 1px solid rgba(170, 140, 240, 0.3); }
-.series-cta a:hover { border-bottom-color: rgba(170, 140, 240, 0.7); }
+body.cover-page .series-section { padding: 3rem 0 1.5rem; }
+body.cover-page .series-section .part-grid { margin-top: 2.5rem; }
+body.cover-page .series-card { cursor: default; }
+body.cover-page .series-card:hover { transform: none; }
+body.cover-page .series-card .series-arc {
+    font-size: 0.95rem;
+    color: rgba(220, 229, 238, 0.7);
+    line-height: 1.5;
+    margin: 0 0 1rem;
+    flex-grow: 1;
+}
+body.cover-page .series-card .series-links {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.74rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+body.cover-page .series-card .series-links a {
+    color: #b390f5;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+body.cover-page .series-card.part-1 .series-links a { color: #6fd0cd; }
+body.cover-page .series-card.part-2 .series-links a { color: #d9bd7a; }
+body.cover-page .series-card.part-3 .series-links a { color: #b3a2f5; }
+body.cover-page .series-card.part-4 .series-links a { color: #ef9eb4; }
+body.cover-page .series-card.part-5 .series-links a { color: #b390f5; }
+body.cover-page .series-card .series-links a:hover { border-bottom-color: currentColor; }
+body.cover-page .series-card .series-here {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: #b390f5;
+}
+body.cover-page .series-card.part-1 .series-here { color: #6fd0cd; }
+body.cover-page .series-card.part-2 .series-here { color: #d9bd7a; }
+body.cover-page .series-card.part-3 .series-here { color: #b3a2f5; }
+body.cover-page .series-card.part-4 .series-here { color: #ef9eb4; }
+body.cover-page .series-card.part-5 .series-here { color: #b390f5; }
+body.cover-page .series-cta {
+    text-align: center;
+    margin-top: 1.6rem;
+    font-size: 1rem;
+    color: rgba(220, 229, 238, 0.7);
+}
+body.cover-page .series-cta a {
+    color: #b390f5;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(170, 140, 240, 0.3);
+}
+body.cover-page .series-cta a:hover { border-bottom-color: rgba(170, 140, 240, 0.7); }
 
 /* Footer */
-footer.cover-footer {
+body.cover-page footer.cover-footer {
     position: relative;
     z-index: 2;
     text-align: center;
@@ -348,13 +448,21 @@ footer.cover-footer {
     font-size: 0.9rem;
     background: transparent;
 }
-footer.cover-footer p { margin: 0 0 0.3rem; text-align: center; }
-footer.cover-footer .footer-title { font-family: 'Cinzel', Georgia, serif; font-size: 0.82rem; letter-spacing: 0.1em; color: rgba(220, 229, 238, 0.55); }
-footer.cover-footer a { color: rgba(170, 140, 240, 0.75); text-decoration: none; }
-footer.cover-footer a:hover { color: #c4a8f8; }
+body.cover-page footer.cover-footer p { margin: 0 0 0.3rem; text-align: center; }
+body.cover-page footer.cover-footer .footer-title {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.1em;
+    color: rgba(220, 229, 238, 0.55);
+}
+body.cover-page footer.cover-footer a {
+    color: rgba(170, 140, 240, 0.75);
+    text-decoration: none;
+}
+body.cover-page footer.cover-footer a:hover { color: #c4a8f8; }
 </style>
 </head>
-<body>
+<body class="cover-page">
 
 <div class="cover-wrap">
 
@@ -387,45 +495,45 @@ footer.cover-footer a:hover { color: #c4a8f8; }
 <div class="part-grid">
 
 <a class="part-card p1" href="toc.html#part-i-iii">
-<span class="part-roman">I-III</span>
+<span class="part-roman">I&#8211;III</span>
 <h3>Quantum Computing Foundations</h3>
-<p>The rules of the game: qubits, measurement, gates, rotation gates, circuits, superposition, interference, entanglement, and the algorithms (Grover, QFT, HHL, VQE) that put them to work.</p>
-<span class="part-count">Ch 0-18 &#183; 19 chapters</span>
+<p>The rules of the game: qubits, measurement, gates, circuits, superposition, interference, entanglement, and the algorithms (Grover, QFT, HHL, VQE) that put them to work.</p>
+<span class="part-count">Ch 0&#8211;18 &#183; 19 chapters</span>
 </a>
 
 <a class="part-card p2" href="toc.html#part-iv-v">
-<span class="part-roman">IV-V</span>
-<h3>Classical ML Refresher and Data Encoding</h3>
+<span class="part-roman">IV&#8211;V</span>
+<h3>Classical ML &amp; Data Encoding</h3>
 <p>A compact ML onramp for quantum readers, then the data-loading problem: why encoding classical data into quantum circuits is not free, what it costs, and what QRAM does and does not solve.</p>
-<span class="part-count">Ch 19-25 &#183; 7 chapters</span>
+<span class="part-count">Ch 19&#8211;25 &#183; 7 chapters</span>
 </a>
 
 <a class="part-card p3" href="toc.html#part-vi-vii">
-<span class="part-roman">VI-VII</span>
-<h3>Quantum ML Models and Optimization</h3>
-<p>Quantum kernels, variational circuits, QNNs, barren plateaus, expressivity, equivariant models, tensor networks, reservoir computing, generative models, reinforcement learning, QAOA, and QUBO.</p>
-<span class="part-count">Ch 26-42 &#183; 17 chapters</span>
+<span class="part-roman">VI&#8211;VII</span>
+<h3>Quantum ML Models &amp; Optimization</h3>
+<p>Quantum kernels, variational circuits, QNNs, barren plateaus, expressivity, equivariant models, tensor networks, generative models, reinforcement learning, QAOA, and QUBO.</p>
+<span class="part-count">Ch 26&#8211;42 &#183; 17 chapters</span>
 </a>
 
 <a class="part-card p4" href="toc.html#part-viii">
 <span class="part-roman">VIII</span>
-<h3>Reality Check: Noise, Hardware, and Limits</h3>
-<p>Density matrices, simulators, noise channels, error mitigation versus correction, the 2026 hardware landscape (six modalities), fault-tolerance roadmaps, and a rigorous framework for evaluating advantage.</p>
-<span class="part-count">Ch 43-49 &#183; 7 chapters</span>
+<h3>Noise, Hardware, and Limits</h3>
+<p>Density matrices, simulators, noise channels, error mitigation versus correction, the 2026 hardware landscape across six modalities, fault-tolerance roadmaps, and a rigorous framework for evaluating advantage.</p>
+<span class="part-count">Ch 43&#8211;49 &#183; 7 chapters</span>
 </a>
 
 <a class="part-card p5" href="toc.html#part-ix">
 <span class="part-roman">IX</span>
 <h3>Advanced Topics in Quantum AI</h3>
-<p>Quantum data and learning separations, QNLP, quantum transformers, graph learning, scientific ML, neural quantum states, AI for quantum, and a survey of where quantum AI is actually applied.</p>
-<span class="part-count">Ch 50-57 &#183; 8 chapters</span>
+<p>Quantum learning separations, QNLP, quantum transformers, graph learning, scientific ML, neural quantum states, AI for quantum, and a survey of where quantum AI is actually applied today.</p>
+<span class="part-count">Ch 50&#8211;57 &#183; 8 chapters</span>
 </a>
 
 <a class="part-card p6" href="toc.html#part-x-xi">
-<span class="part-roman">X-XI</span>
-<h3>Software, Practice, and Capstones</h3>
-<p>The engineering spine: reproducible environments, AI-assisted coding, real-hardware access, GPU/JIT acceleration, benchmarking and statistics, and six capstone projects including a reproduce-a-paper lab.</p>
-<span class="part-count">Ch 58-69 &#183; 12 chapters</span>
+<span class="part-roman">X&#8211;XI</span>
+<h3>Software, Practice &amp; Capstones</h3>
+<p>The engineering spine: reproducible environments, AI-assisted coding, real-hardware access, GPU/JIT acceleration, benchmarking, and six capstone projects including a reproduce-a-paper lab.</p>
+<span class="part-count">Ch 58&#8211;69 &#183; 12 chapters</span>
 </a>
 
 </div>
@@ -433,7 +541,7 @@ footer.cover-footer a:hover { color: #c4a8f8; }
 
 <section aria-labelledby="teaches-heading" class="teaches-section">
 <h2 class="cover-section-title" id="teaches-heading">How This Book Teaches</h2>
-<p class="cover-section-sub">Seven representations per concept, a tuned classical baseline for every model, and runnable code for every idea, from first qubit to final capstone.</p>
+<p class="cover-section-sub">Five habits, kept in every chapter from the first qubit to the last capstone.</p>
 <div class="teach-grid">
 
 <div class="teach-item">
@@ -450,8 +558,8 @@ footer.cover-footer a:hover { color: #c4a8f8; }
 
 <div class="teach-item">
 <span aria-hidden="true" class="teach-glyph">&#9998;</span>
-<h3>Evaluation First</h3>
-<p>Quantum AI is not magic AI. Every model meets a tuned classical baseline. Every advantage claim is held to dequantization, classical-surrogate, and benchmarking standards from the published literature.</p>
+<h3>Honest Baselines</h3>
+<p>Every model meets a tuned classical baseline. Every advantage claim is held to dequantization, classical-surrogate, and benchmarking standards from the published literature.</p>
 </div>
 
 <div class="teach-item">
@@ -463,7 +571,7 @@ footer.cover-footer a:hover { color: #c4a8f8; }
 <div class="teach-item">
 <span aria-hidden="true" class="teach-glyph">&#128270;</span>
 <h3>Research Frontiers</h3>
-<p>Every advanced chapter closes with the open questions at the research frontier. The most recent results (2024-2026) are integrated throughout, so the book stays current as you read.</p>
+<p>Every advanced chapter closes with the open questions at the research frontier. The most recent results (2024&#8211;2026) are integrated throughout, so the book stays current as you read.</p>
 </div>
 
 </div>
@@ -472,7 +580,7 @@ footer.cover-footer a:hover { color: #c4a8f8; }
 <section aria-labelledby="series-heading" class="series-section">
 <h2 class="cover-section-title" id="series-heading">The Hands-On AI Science Series</h2>
 <p class="cover-section-sub">Building Quantum AI is one of five connected books, each a deep, build-it-yourself guide to a major field of AI.</p>
-<p class="cover-promise" style="margin-top:0;margin-bottom:2rem;">Hands-On AI Science is a series of in-depth guides to the major fields of artificial intelligence. Every book goes deep into the theory, models, and internals, covering the classical foundations and the most recent ideas, then shows you how to build each one in Python with the modern libraries and tools that get the job done. The writing stays plain and light (illustrations, analogies, mental models, worked examples, and a little fun) without trading away rigor or coverage. Each volume is self-contained and complete enough to anchor a full course on its subject.</p>
+<p class="cover-promise" style="margin-top:0;">Hands-On AI Science is a series of in-depth guides to the major fields of artificial intelligence. Every book goes deep into the theory, models, and internals, covering the classical foundations and the most recent ideas, then shows you how to build each one in Python with the modern libraries and tools that get the job done. The writing stays plain and light (illustrations, analogies, mental models, worked examples, and a little fun) without trading away rigor or coverage. Each volume is self-contained and complete enough to anchor a full course on its subject.</p>
 <div class="part-grid">
 
 <div class="part-card series-card part-1">
