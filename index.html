@@ -82,6 +82,10 @@ body::before {
     display: inline-block;
 }
 
+.cover-image-wrapper { margin: 0 auto 1.4rem; }
+.cover-image { max-width: 280px; width: 100%; height: auto; border-radius: 10px; box-shadow: 0 18px 48px rgba(0,0,0,0.45); border: 1px solid rgba(255,255,255,0.15); display: block; margin: 0 auto; }
+@media (max-width: 600px) { .cover-image { max-width: 200px; } }
+
 .cover-title {
     font-family: 'Cinzel', Georgia, serif;
     font-weight: 700;
@@ -356,6 +360,7 @@ footer.cover-footer a:hover { color: #c4a8f8; }
 
 <header class="hero">
 <span class="edition-pill">First Edition &#183; 2026</span>
+<div class="cover-image-wrapper"><img alt="Book cover: quantum circuits and neural networks converging into quantum machine learning, with the title Building Quantum AI" class="cover-image" height="2560" src="images/book-cover.svg" width="1600"/></div>
 <h1 class="cover-title">Building Quantum AI
 <span class="title-arc">From Qubits to Quantum Machine Learning</span></h1>
 <p class="cover-subtitle">Deep theory, hands-on code, and an evaluation-first conscience: quantum computing, quantum machine learning, and quantum AI from first principles to the research frontier.</p>
